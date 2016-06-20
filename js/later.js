@@ -7,7 +7,6 @@
       planner.events();
 
       booking.room();
-      booking.toggleState();
 
       office.atOffice();
 
