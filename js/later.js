@@ -1,178 +1,199 @@
 (function() {
   'use strict';
   
-  var app = {
-    init: function() {      
-      planner.selectData();
-      planner.events();
+var app = {
+  init: function() {      
+    
+    planner.selectData();
+    
+    jan.events();
 
-      booking.room();
-      booking.toggleState();
+    booking.room();
 
-      office.atOffice();
+    office.atOffice();
 
+    // removeBookingsTool.remove();
 
-      reverse.test();
+  }
+};
 
-    }
-  };
+// als je klikt op een datum buttons
+// planner
+// als je klikt op een datum buttons
+var planner = { 
+  selectData: function() {
+    var dateClick = document.querySelectorAll('.day');
 
-  // als je klikt op een datum buttons
-  // planner
-  // als je klikt op een datum buttons
-  var planner = { // schrijf nog even een loop
-    selectData: function() {
-      var dateClick = document.querySelectorAll('.day');
+    var bookDeskButton = document.querySelector('.bookDeskButton');
+    
+    var officeButton = document.querySelector('.officeButton');
 
-      var planDesk = document.querySelector('.book_desk');
-      var office = document.querySelector('.office');
+    var bookDeskToolBar = document.querySelector('.bookDeskToolBar');
 
-      var desk = document.querySelector('.bookDesk');
+    var vinkBook = document.querySelector('.vink_book');
 
-      for(var i = 0; i < dateClick.length; i++) {
-          dateClick[i].onclick = function() {
-              planDesk.classList.remove('hide');
-              office.classList.remove('hide');
-
-              setTimeout(function() { 
-                desk.classList.remove('hide');
-              }, 900);
-
-              var checkedDays = document.querySelectorAll('.day:checked');
+    for(var i = 0; i < dateClick.length; i++) {  
         
-              if (checkedDays.length >  0) { // hier nog zorgen dat de animatie showed en hide
-                  console.log('show');
-              } else {
-                  console.log('hide');
-              }
-          };
-      };
-    }, 
+      dateClick[i].addEventListener('click', function (ev) {
+        
+        bookDeskButton.classList.remove('hide');
+        officeButton.classList.remove('hide');
+        bookDeskToolBar.classList.remove('hide');
+        
+        var checkedDays = document.querySelectorAll('.day:checked');
+        
+        // if more then 6 checkboxes are checked remove toolbar 
+        if (checkedDays.length >= 6) {
+          
+          setTimeout(function() { 
+            bookDeskButton.classList.add('hide');
+            officeButton.classList.add('hide');
+            bookDeskToolBar.classList.add('hide');
+          }, 200); 
+          
+          notification.toMany();
+          
+          // if 0 checkboxes are checked remove toolbar 
+        } else if (checkedDays.length === 0) {
+          
+          setTimeout(function() { 
+            bookDeskButton.classList.add('hide');
+            officeButton.classList.add('hide');
+            bookDeskToolBar.classList.add('hide');
+          }, 300);
 
-    events: function() {
-      var bookDeskButton = document.querySelector('.book_desk');
-      var desk = document.querySelector('.bookDesk');
+           vinkBook.classList.add('hide');
+          
+        }
+      });  
+    }
+  }
+}; 
+
+// herschrijven die functie /////////////////////////////
+var jan = {
+   events: function () {
+      var bookDeskButton = document.querySelector('.bookDeskButton');
+      var bookDeskToolBar = document.querySelector('.bookDeskToolBar');
 
       // attOfficeButtonClick
-      var attOfficeButton = document.querySelector('.office');
+      var attOfficeButton = document.querySelector('.officeButton');
       var attOffice = document.querySelector('.addOffice');
 
       // vink animation
       var vinkBook = document.querySelector('.vink_book');
-      // var vinkBookDesk = document.querySelector('.vink_bookDesk');
       var vink = document.querySelector('.vink');
       var newone = vink.cloneNode(true);
 
       //Click on book desk
       var bookButton = document.querySelector('.booked');
       
-      attOfficeButton.onclick = function(ev) {
-        desk.classList.add('hide');
+      attOfficeButton.addEventListener('click', function (ev) {
+        bookDeskToolBar.classList.add('hide');
         ev.preventDefault();
           attOffice.classList.remove('hide');
-      };
+      });
 
-      // de animatie is al afgespeeld al de pagina geladen is. Je kan niet de animatie class eraf halen en hem er weer op zetten 
-      // daarom moet je via webkitanimationEnd werken.
-       
+      bookDeskButton.addEventListener('click', function (ev) {
+        attOffice.classList.add('hide');
+        ev.preventDefault();
+          bookDeskToolBar.classList.remove('hide');
+      });
+      
       // animatie voor de vink   
-      bookDeskButton.addEventListener('webkitAnimationEnd', function(){
+      bookDeskButton.addEventListener('webkitAnimationEnd', function() {
           this.style.webkitAnimationName = '';
       }, false); // reset animation
+     
+     
+       bookButton.addEventListener('click', function (ev) {
+         ev.preventDefault();
+         
+         var inputElems = document.getElementsByTagName("input");
+         var count = 0;
+         
+         for (var i=0; i<inputElems.length; i++) { 
+           
+           if (inputElems[i].type == "checkbox" && inputElems[i].checked === true) {
+             
+             count++;
+             
+             // adds checkbox color
+             inputElems[i].classList.add('active'); 
+             inputElems[i].classList.add('test'); 
+             
+             vinkBook.classList.remove('hide');
+             
+             bookDeskButton.style.webkitAnimationName = 'vink';
 
-      bookButton.onclick = function(ev) {
-        ev.preventDefault();
-        var inputElems = document.getElementsByTagName("input");
-        var count = 0;
-          
-        for (var i=0; i<inputElems.length; i++) { 
-
-          if (inputElems[i].type == "checkbox" && inputElems[i].checked === true) {
-            count++;
-            inputElems[i].classList.add('active'); // hij werkt ik moet alleen nog het label vinden
-
-            vinkBook.classList.remove('hide');
-            // vinkBookDesk.classList.remove('hide');
-            bookDeskButton.style.webkitAnimationName = 'vink';
-
-          } else if (count > 10) {
-            alert('teveel');
-
-          } else {
-            // alert('boe');
-            // inputElems[i].style.backgroundColor = "#bff0a1";
-            // of we voegen hier een class door die de bg kleur aanpast!
-          }
-        } 
-      }; // close bookButton
-    } //close selectButton
-  }; //close planner
-
-
+           } 
+         } 
+     }); // close bookButton  
+   }
+};
 
  // als je op bookt hebt geklikt 
- var booking = {
-     room: function() {
-         // reference to booking object        
-         var bookingObj = this;
-         // store rooms in nodelist (this is not an array!)
-         var rooms = document.querySelectorAll('.book');
-         var bookButton = document.querySelector('.booked');
+var booking = {
+   room: function() {
+       // reference to booking object        
+       var bookingObj = this;
+       // store rooms in nodelist (this is not an array!)
+       var rooms = document.querySelectorAll('.book');
+       var bookButton = document.querySelector('.booked');
 
-         // loop through rooms
-         [].forEach.call(rooms, function(room, i) {
-             room.addEventListener('click', function (ev) {
-                 ev.preventDefault();
+       // loop through rooms
+       [].forEach.call(rooms, function(room, i) {
+           room.addEventListener('click', function (ev) {
+               ev.preventDefault();
 
-                 bookButton.classList.remove('hide');
-                 // reference to clicked element
-                 var clickedElement = this;
-                 // copy/convert the rooms nodelist into an new array
-                 var copyRooms = [].slice.call(rooms);
-                 // remove the clicked room from the array
-                 var otherRooms = copyRooms.filter(function(x) { return x !== clickedElement; });
-                 // toggle state of all non-clicked rooms
-                 for (i = 0; i < otherRooms.length; i++) {
-                     // get state from data-state attribute
-                     var state = otherRooms[i].dataset.state;
-                     
-                     // toggle state if 'booked'
-                     if (state === 'booked') {
-                         bookingObj.toggleState(otherRooms[i]);                  
-                     }
-                 };
-                 // toggle clicked room state
-                 bookingObj.toggleState(this);
-             });
-         });
-     },
-     // toggle state of passed element
-     toggleState: function (element) {
-         // get values from data attributes
-         var state = element.dataset.state;
-         var defaultSeats = element.dataset.seats;
-         var indicator = element.querySelector('.plus-minus-toggle');
-         var availableSeats = element.querySelector('.number');
-         var iterator = availableSeats.textContent;
-         
-         if (state === 'available') {
-             iterator--;
-             availableSeats.textContent = iterator;
-             //toggle indicator
-             indicator.classList.toggle('collapsed');
-             //toggle state
-             element.setAttribute('data-state', 'booked');
-         } else { //state === 'booked'
-             iterator++
-             availableSeats.textContent = iterator;
-             //toggle indicator
-             indicator.classList.toggle('collapsed');
-             //toggle state
-             element.setAttribute('data-state', 'available');
-         }
-     }
- };
-
+               bookButton.classList.remove('hide');
+               // reference to clicked element
+               var clickedElement = this;
+               // copy/convert the rooms nodelist into an new array
+               var copyRooms = [].slice.call(rooms);
+               // remove the clicked room from the array
+               var otherRooms = copyRooms.filter(function(x) { return x !== clickedElement; });
+               // toggle state of all non-clicked rooms
+               for (i = 0; i < otherRooms.length; i++) {
+                   // get state from data-state attribute
+                   var state = otherRooms[i].dataset.state;
+                   
+                   // toggle state if 'booked'
+                   if (state === 'booked') {
+                       bookingObj.toggleState(otherRooms[i]);                  
+                   }
+               }
+               // toggle clicked room state
+               bookingObj.toggleState(this);
+           });
+       });
+   },
+   // toggle state of passed element
+   toggleState: function (element) {
+       // get values from data attributes
+       var state = element.dataset.state;
+       var defaultSeats = element.dataset.seats;
+       var indicator = element.querySelector('.plus-minus-toggle');
+       var availableSeats = element.querySelector('.number');
+       var iterator = availableSeats.textContent;
+       
+       if (state === 'available') {
+           iterator--;
+           availableSeats.textContent = iterator;
+           //toggle indicator
+           indicator.classList.toggle('collapsed');
+           //toggle state
+           element.setAttribute('data-state', 'booked');
+       } else { //state === 'booked'
+           iterator++;
+           availableSeats.textContent = iterator;
+           //toggle indicator
+           indicator.classList.toggle('collapsed');
+           //toggle state
+           element.setAttribute('data-state', 'available');
+       }
+   }
+};
 
 // als je op office hebt geklikt 
 var office = {
@@ -184,51 +205,71 @@ var office = {
 
 
     [].forEach.call(slider, function(s, i) {
-      s.onclick = function(ev) {
+      s.addEventListener('click', function (ev) {
         ev.preventDefault();   
         content[i].classList.toggle('hide');
         toggle[i].classList.toggle('collapsed');
-      };
+      });
     });       
   }
 };
 
-  var reverse = {
-    test: function () {
-      var planDesk = document.querySelector('.book_desk');
-      var office = document.querySelector('.office');
-      var desk = document.querySelector('.bookDesk');
-      var booked = document.querySelector('.booked');
+var notification = {
+  toMany: function () {
+    var notification = document.querySelector('.notification_toMany');
+    var closeMessage = document.querySelector('.message-close');
 
-      booked.addEventListener('webkitAnimationEnd', function(){
-          this.style.webkitAnimationName = '';
-      }, false); // reset animation
+    notification.classList.remove('hide');
 
-      var allClasses = [planDesk, office, desk, booked];
+    setTimeout(function() { 
+      notification.classList.add('hide');
+    }, 5000);
 
-          booked.onclick = function(ev) {
-            
-            ev.preventDefault();
-            
-            booked.classList.add('reverse');
-
-            booked.style.webkitAnimationName = 'desk';
-            
-          }
-        
-  //     // allClasses.forEach(function(el) {
-
-  //     //     booked.onclick = function(ev) {
-            
-  //     //       ev.preventDefault();
-            
-  //     //       allClasses[i].classList.add('reverse');
-            
-  //     //     }
-  //     // });
-    }
+    closeMessage.addEventListener('click', function (ev) {
+      closeMessage.closest('.notification_toMany').classList.add('hide');
+    });
   }
-  
-    app.init();
+};
 
- })();
+// var removeBookingsTool = {
+//   remove: function () {
+//     var bookDeskButton = document.querySelector('.bookDeskButton');
+//     var officeButton = document.querySelector('.officeButton');
+//     var desk = document.querySelector('.bookDesk');
+//     var booked = document.querySelector('.booked');
+
+//     // booked.addEventListener('webkitAnimationEnd', function(){
+//     //     this.style.webkitAnimationName = '';
+//     // }, false); // reset animation
+
+//     // var allClasses = [bookDeskButton, office, desk, booked];
+
+          
+//           // ev.preventDefault();
+
+
+
+//           setTimeout(function() { 
+//             booked.classList.add('hide');
+//             bookDeskButton.classList.add('hide');
+//             officeButton.classList.add('hide');
+//             desk.classList.add('hide');
+//           }, 1000);
+
+//           booked.style.webkitAnimationName = 'reset';
+                
+//    // for(var i = 0; i < allClasses.length; i++ ) {
+//    //    var value = allClasses.length();
+//    //      booked.onclick = function(ev) {
+          
+//    //        ev.preventDefault();
+//    //        value.classList.add('hide');
+          
+//    //      }
+//    //  };
+//   }
+// }
+ 
+  app.init();
+
+})();

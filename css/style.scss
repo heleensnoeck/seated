@@ -46,138 +46,9 @@ main {
 
 header {
 	position: fixed;
-	height: 1.5em;
+	height: 2em;
 	width:100%; 
 	z-index: 1;
-}
-
-#dropdown {
-	position: fixed;
-	margin-top: 3.7em;
-	height:2em;
-	width: 100%;
-	z-index: 2;
-	-webkit-transition: all 1s ease-in-out;
-	transition: all 1s ease-in-out;
-}
-
-details {
-	z-index: 1;
-		-webkit-transition: all 1s ease-in-out;
-	transition: all 1s ease-in-out;
-	summary {
-		text-align: center;
-		font-size: 16px;
-		font-weight: 600;
-		background-color: #BABABA;
-		padding: 0.5em;
-		color: #fff;
-	}
-
-	summary::-webkit-details-marker {
-	  display: none
-	}	
-}
-
-/* base checkboxes moet boven staan ivm overschrijvingen*/
-.working_home_dates, .working_home_days, .agenda {
-	label {
-	    display: inline-block;
-	    cursor: pointer;
-	    position: relative;
-	    padding-left: 25px;
-	    margin-right: 15px;
-	    font-size: 13px;
-	}
-
-	label span {
-	    position: absolute;
-	    left: 22px;
-	    top: -34px;
-	    font-weight: 600;
-	}
-
-	label:before {
-	    content: "";
-	    display: inline-block;
-	    width: 53px;
-	    height: 53px;
-	    margin-right: 10px;
-	    position: absolute;
-	    left: 0;
-	    bottom: 1px;
-	}
-
-	input[type=checkbox] {
-	    display: none;
-	}
-	
-	// dit is hem
-	input[type=checkbox]:checked + label:before {
-	    content: "";
-	    background-color:#9AC538;
-	    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-	    font-size: 15px;
-	    color: #f3f3f3;
-	    text-align: center;
-	    line-height: 15px;
-	}
-
-	input[type=checkbox].active:checked + label:before {
-		background-color:#E77E23;
-	}
-}
-
-
-
-.working_home_dates {
-	list-style: none;
-	padding-left: 20px;
-	padding-top: 2.32em;
-	background-color: #C9C9C9;
-	height: 1em;
-	border-bottom: aliceblue 1px solid;
-
-		 li { 
-		 	display: inline;
-		 	font-size: 0.85em;
-		 	text-transform: uppercase;
-		 	margin-left: 51.4px;
-		 	font-weight: 300;
-		 	color: #fff;
-		 }
-
-		 label span {
-		 	left: 10px;
-		 	top: -34px;
-		 }
-
-		 span.month  {
-		 	left: 2px;
-		 }
-}
-
-
-.working_home_days {
-	list-style: none;
-	padding-left: 20px;
-	padding-top: 2.32em;
-	background-color: #C9C9C9;
-	height: 1em;
-
-		 li { 
-		 	display: inline;
-		 	font-size: 0.85em;
-		 	text-transform: uppercase;
-		 	margin-left: 20.4px;
-		 	font-weight: 300;
-		 	color: #fff;
-		 }
-
-		 label span {
-		 	left: 10px;
-		 	top: -34px;
-		 }
 }
 
 /* agenda bar */
@@ -187,15 +58,18 @@ details {
 	margin-top: 3.2em;
 
 	.month-weekdays {
+		display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    margin: 1px -82px 0 32px;
 
 		 span {
 		 	font-size: 0.9em;
 		 	text-transform: uppercase;
-		 	margin-left: 5.2%;
 		 	font-weight: 500;
 		 	color: #fff;
 		 	letter-spacing: 0.3px;
-		 	-webkit-font-smoothing: antialiased;
+		 	width: calc(100% * (1/7) - 10px - 1px);
 		}
 	}
 }
@@ -237,13 +111,6 @@ details {
 	margin: 0 0 0 3px;
 
 	li {
-		// list-style: none;
-		// position: relative;
-		// margin-left: 7px;
-		// margin-bottom: 20px;
-		// margin-top: 15px;
-		// margin-right: 6px;
-
 		list-style: none;
 		display: inline-block;
 	    margin: 10px 0px -57px 10px;
@@ -251,6 +118,78 @@ details {
 	    width: calc(100% * (1/7) - 10px - 1px);
 	}
 }
+
+// agenda disabled
+.agenda_dates.active li:nth-of-type(n+18) span, .agenda_dates.disabled li span {
+	color: gray;
+}
+
+input[type=checkbox]:disabled {
+	cursor: not-allowed;
+}
+
+/* base checkboxes moet boven staan ivm overschrijvingen*/
+.working_home_dates, .working_home_days, .agenda {
+	label {
+	    display: inline-block;
+	    cursor: pointer;
+	    position: relative;
+	    padding-left: 25px;
+	    margin-right: 15px;
+	    font-size: 13px;
+	}
+
+	label span {
+	    position: absolute;
+	    left: 22px;
+	    top: -34px;
+	    font-weight: 600;
+	}
+
+	label:before {
+	    content: "";
+	    display: inline-block;
+	    width: 53px;
+	    height: 53px;
+	    margin-right: 10px;
+	    position: absolute;
+	    left: 0;
+	    bottom: 1px;
+	    background-color: #fff;
+	}
+
+	input[type=checkbox] {
+	    position: absolute;
+	    margin-right: 15px;
+	    font-size: 13px;
+	}
+	
+	// dit is hem
+	input[type=checkbox]:checked + label:before {
+	    content: "";
+	    background-color:#9AC538;
+	    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	    font-size: 15px;
+	    color: #f3f3f3;
+	    text-align: center;
+	    line-height: 15px;
+	}
+
+	input[type=checkbox].active:checked + label:before {
+		background-color:#E77E23;
+	}
+}
+
+// input[type=checkbox].test:checked + li span {
+// 	color:#fff;
+// }
+.agenda_dates.test li span {
+	color: #fff;
+}
+
+
+
+
 
 /* checkbox aspect */
 /* Base for label styling */
@@ -280,10 +219,6 @@ details {
 	    position: absolute;
 	    left: 0;
 	    bottom: 1px;
-	}
-
-	input[type=checkbox] {
-	    display: none;
 	}
 
 	input[type=checkbox]:checked + label:before {
@@ -324,21 +259,15 @@ details {
   right: 0;  
 }
 
-// .vink_reset {
-//   margin-left: 8.6em;
-//   margin-top: -2.5em;
-// }
 
 
-.book_desk.hide, .office.hide, .reset.hide {
+.bookDeskButton.hide, .officeButton.hide, .reset.hide {
   display:none;
 }
 
 .vink_book.hide, .vink_reset.hide  {
   display: none;
 }
-
-
 
 
 // .reset {
@@ -351,7 +280,7 @@ details {
 
 
 // bovenste buttons 
-.book_desk, .office, { 
+.bookDeskButton, .officeButton, { 
 	border: none;
 	color: white;
 	padding-top: 16px;
@@ -366,17 +295,16 @@ details {
 	-webkit-animation: desk 0.5s ease;
 	float: left;
 	letter-spacing: 0.3px;
+}
 
-	.remove {
-		animation-fill-mode: forwards;
-		-webkit-animation-direction: reverse;
-		animation-direction: reverse;
-	}
+.remove {
+	-webkit-animation: reset 0.5s ease;
+	// animation-fill-mode: backwards;
+	-webkit-animation-fill-mode: forwards;
 }
 
 
-
-.office {
+.officeButton {
 	background-color: #3A8ED6;
 }
 
@@ -400,7 +328,7 @@ details {
 }
 
 .done {
-	background-color: #C0C0C0;
+	background-color: #E77E23;
 }
 
 #submit {
@@ -411,83 +339,43 @@ details {
 
 
 // book section
-.bookDesk {
+.bookDeskToolBar {
 	clear: both;
 
-.book {
-    text-align: center;
-    background-color: #6F85E1;
-    border: none;
-    width: 100%;
-    height: 53px;
-    color: white;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    -webkit-animation: reset 0.5s ease;
+	.book {
+	    text-align: center;
+	    background-color: #6F85E1;
+	    border: none;
+	    width: 100%;
+	    height: 53px;
+	    color: white;
+	    text-decoration: none;
+	    display: block;
+	    font-size: 16px;
+	    font-weight: 500;
+	    -webkit-animation: reset 0.5s ease;
 
-    h3 {
-    	display: flex;
-    	font-weight: 400;
-    	margin-left: 4.2em;
-    	margin-top: 0.5em;
-    	margin-bottom: 0.5em;
-    } 
+	    h3 {
+	    	display: flex;
+	    	font-weight: 400;
+	    	margin-left: 4.2em;
+	    	margin-top: 0.5em;
+	    	margin-bottom: 0.5em;
+	    } 
+	}
+
+	.space1 {
+	    background-color:#77B837;
+	}
+
+	.space2 {
+	    background-color:#94C976;
+	}   
+
+	.space3 {
+	    background-color:#B8DA9B;
+	}
 }
-
-.space1 {
-    background-color:#77B837;
-}
-
-.space2 {
-    background-color:#94C976;
-}   
-
-.space3 {
-    background-color:#B8DA9B;
-}
-
-}
-// .bookDesk .book:nth-of-type(2) h3 {
-// 	color:#9F777F;
-// }
-
-
-//cross disabled
-// .cross-toggle {
-//   height: 21px;
-//   position: absolute;
-//   width: 21px;
-//   margin-left: 1.2em;
-//   margin-top: 1.5em;
-  
-//       &:before{
-//         background: #A8838A;
-//         content: '';
-//         height: 5px;
-//         left: 0;
-//         position: absolute;
-//         top: 0;
-//         width: 21px;
-//         transform: rotate(133deg);
-//       }
-
-//       &:after {
-//         background: #A8838A;
-//         content: '';
-//         height: 5px;
-//         left: 0;
-//         position: absolute;
-//         top: 0;
-//         width: 21px;
-//         transform: rotate(48deg);
-//       }
-// }
-
-// h3:nth-of-type(2) {
-// 	color:black;
-// }
 
 
 
@@ -528,7 +416,7 @@ details {
 
 
 
-// attOffice
+// attOffice section
 .addOffice {
 	clear: both;
 
@@ -647,6 +535,15 @@ details {
 }
 
 
+@-webkit-keyframes back {
+    from {
+        width: 100%; 
+    }
+    to {
+        width: 0%;
+    }
+}
+
 @-webkit-keyframes reset {
     from {
         width: 25%; 
@@ -670,146 +567,6 @@ details {
   
 }
 
-// menu 
-.menu-item, .menu-open-button, {
-  background: #ffc107;
-  width: 54px;
-  height: 54px;
-  margin-left: -26px;
-  position: fixed;
-  bottom:0;
-  color: white;
-  text-align: center;
-  line-height: 80px;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: -webkit-transform ease-out 200ms;
-  transition: -webkit-transform ease-out 200ms;
-  transition: transform ease-out 200ms;
-  transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
-}
-
-
-
-.menu-open {
-  display: none;
-}
-
-.hamburger {
-  width: 25px;
-  height: 3px;
-  background: white;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -12.5px;
-  margin-top: -1.5px;
-  -webkit-transition: -webkit-transform 200ms;
-  transition: -webkit-transform 200ms;
-  transition: transform 200ms;
-  transition: transform 200ms, -webkit-transform 200ms;
-}
-
-.hamburger-1 {
-  -webkit-transform: translate3d(0, -8px, 0);
-          transform: translate3d(0, -8px, 0);
-}
-
-.hamburger-2 {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-.hamburger-3 {
-  -webkit-transform: translate3d(0, 8px, 0);
-          transform: translate3d(0, 8px, 0);
-}
-
-.menu-open:checked + .menu-open-button { 
-	.hamburger-1 {
-  	  -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
-          transform: translate3d(0, 0, 0) rotate(45deg);
-	}
-	.hamburger-2 {
-	  -webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
-	          transform: translate3d(0, 0, 0) scale(0.1, 1);
-	}
-	.hamburger-3 {
-	  -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
-	          transform: translate3d(0, 0, 0) rotate(-45deg);
-	}
-}
-
-.menu, .menu2 {
-	position: relative;
-	left: 50%;
-	// height:25px;
-	box-sizing: border-box;
-	font-size: 20px;
-	text-align: left;
-}
-
-
-.menu-item:hover {
-  opacity:0.5;
-  // color: #ffc107;
-}
-.menu-item:nth-child(3) {
-  -webkit-transition-duration: 180ms;
-          transition-duration: 180ms;
-}
-.menu-item:nth-child(4) {
-  -webkit-transition-duration: 180ms;
-          transition-duration: 180ms;
-}
-.menu-item:nth-child(5) {
-  -webkit-transition-duration: 180ms;
-          transition-duration: 180ms;
-}
-.menu-item:nth-child(6) {
-  -webkit-transition-duration: 180ms;
-          transition-duration: 180ms;
-}
-
-.menu-open-button {
-  z-index: 2;
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-transition-duration: 400ms;
-          transition-duration: 400ms;
-  -webkit-transform: scale(1.1, 1.1) translate3d(0, 0, 0);
-          transform: scale(1.1, 1.1) translate3d(0, 0, 0);
-  cursor: pointer;
-}
-
-
-.menu-open:checked + .menu-open-button {
-  -webkit-transition-timing-function: linear;
-          transition-timing-function: linear;
-  -webkit-transition-duration: 200ms;
-          transition-duration: 200ms;
-  -webkit-transform: scale(0.8, 0.8) translate3d(0, 0, 0);
-          transform: scale(0.8, 0.8) translate3d(0, 0, 0);
-}
-
-.menu-open:checked ~ .menu-item {
-  -webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-          transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.menu-open:checked ~ .menu-item:nth-child(3) {  
-  -webkit-transition-duration: 170ms;
-          transition-duration: 170ms;
-  -webkit-transform: translate3d(-70px, 0, 0);
-          transform: translate3d(-70px, 0, 0);
-}
-
-.menu-open:checked ~ .menu-item:nth-child(4) {
-  -webkit-transition-duration: 330ms;
-          transition-duration: 330ms;
-  -webkit-transform: translate3d(70px, 0, 0);
-          transform: translate3d(70px, 0, 0);
-}
 
 img {
 	width: 30px;
@@ -823,10 +580,10 @@ img {
 
 
 // notification_full
-.notification_full, .notification_flex, .notification_toMany { 
+.notification_toMany { 
 	display: table;
 	max-width: 337px;
-	background-color: #0074D9;
+	background-color: #3A5AA8;
 	color: #fff;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
@@ -890,19 +647,14 @@ img {
 	display:none;
 } 
 
-input[type=checkbox]:disabled {
-	cursor:none;
-}
-
-.agenda_dates.active li:nth-of-type(n+18) span, .agenda_dates.disabled li span {
-	color: gray;
-}
-
-.hide {
+.notification_toMany.hide {
 	display:none;
 } 
 
-// .agenda_dates.disabled li span {
-// 	color: red;
-// }
+
+
+
+
+
+
 

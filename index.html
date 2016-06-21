@@ -165,13 +165,13 @@
 			
 			<div class="calender_submits">
 			  
-			  <input class="book_desk hide" type="submit" value="Book desk in room">
+			  <input class="bookDeskButton hide" type="submit" value="Book desk in room">
 	  
-			  <input class="office hide" type="submit" value="Employees in room">
+			  <input class="officeButton hide" type="submit" value="Employees in room">
 			
 			</div> <!-- close calender submits -->
 			    
-			<section class="bookDesk hide"> 
+			<section class="bookDeskToolBar hide"> 
 			    <button class="book space1" type="submit" value="book" data-state="available" data-seats="15">
 			        <div class="plus-minus-toggle collapsed"></div>
 			        <h3><strong>Room 1:</strong><span class="number">15</span>/15 desks available</h3>
@@ -188,12 +188,10 @@
 			    </button>
 			    
 			    <span class="vink vink_book hide"></span>
-			    <input class="booked remove" type="submit" value="Book">
-
+			    <input class="booked remove hide" type="submit" value="Book">
 			</section> <!-- close bookDesk -->
 
 		    <section class="addOffice hide">        
-		       
 		       <div class="arrow collapsed"></div>
 		       <div class="slider slider1_bg"><h3>Room 1</h3></div>
 		       <section class="content hide">
@@ -372,31 +370,6 @@
 			</div>
 		</form>
 
-		<div class="notification_full hide" id="js-timer">
-	        <div class="message-icon">
-	          <span><img src="img/bel.svg"></span>
-	        </div>
-	        <div class="message-body">
-	          <p>You will get a notification when all spots are full for the day</p>
-	          <br/>
-	          <p>The nofification will disappear within a few seconds.</p>
-	        </div>
-	        <button class="message-close  js-messageClose"><span class="cross">get notifications</button>
-		</div>
-
-    	<div class="notification_flex hide" id="js-timer2">
-	        <div class="message-icon">
-	          <span><img src="img/check.svg"></span>
-	        </div>
-	        <div class="message-body">
-	          <p>Thank you!</p>
-	          <br/>
-	          <p>Your desk will be available for flexworker</p>
-	        </div>
-	        <button class="message-close  js-messageClose"><span class="cross">get notifications</button>
-		</div>
-
-
     	<div class="notification_toMany hide" id="js-timer2">
 	        <div class="message-icon">
 	          <span><img src="img/attention.svg"></span>
@@ -409,17 +382,6 @@
 	        <button class="message-close  js-messageClose"><span class="cross">get notifications</button>
 		</div>
 			
-<!-- 		<nav class="menu">
-		  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-		  <label class="menu-open-button" for="menu-open">
-		    <span class="hamburger hamburger-1"></span>
-		    <span class="hamburger hamburger-2"></span>
-		    <span class="hamburger hamburger-3"></span>
-		  </label>
-		  
-		  <a href="index2.html" class="menu-item"><img alt="Home" src="img/book.svg"></a>
-		  <a href="" class="notification menu-item"><img alt="Notifications" src="img/bel.svg"></a>
-		</nav> -->
 	</main>
 	<script src="js/later.js"></script>
 </body>
