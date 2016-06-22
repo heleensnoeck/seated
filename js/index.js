@@ -70,51 +70,5 @@ $(document).ready(function(){
       $('.vink_reset').removeClass('vink').addClass('vink'); 
     });
 
-    // notification aanmelden
-    function closeMessage(el) {
-      el.addClass('hide');
-    }
-
-    $('.notification').on('click', function(e) {
-        e.preventDefault();
-      $(".notification_full").removeClass('hide');
-    });
-
-    $('.js-messageClose').on('click', function(e) {
-      closeMessage($(this).closest('.notification_full'));
-    });
-
-    $('.notification').on('click', function() {
-      setTimeout(function() {
-        closeMessage($('#js-timer'));
-      }, 5000);
-    });
-
-    // notification fixed desk
-    $('.notification_desk').on('click', function(e) {
-      e.preventDefault();
-      $(".notification_flex").removeClass('hide');
-    });
-
-    $('.js-messageClose').on('click', function(e) {
-      closeMessage($(this).closest('.notification_flex'));
-    });
-    
-    // close dropdown
-      $('.notification_desk').click(function () {
-        var isOpen = ($("#dropdown").attr("open") == "open");
-        if (isOpen == true){
-          $("#dropdown").removeAttr( "open" );
-        }
-      });
-
-    $('.notification_desk').on('click', function() {
-      setTimeout(function() {
-        closeMessage($('#js-timer2'));
-      }, 5000);
-    });
-
-
-
 });
 

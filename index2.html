@@ -1,0 +1,112 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<title>Book a desk</title>
+</head>
+
+<body>
+	<main>
+		<!-- <a href="#menu"></a> -->
+		<h1>Book a desk</h1>
+		<header class="month-bar two">
+			<div class="month-weekdays">
+				<span>Mon</span>
+				<span>Tue</span>
+				<span>Wed</span>
+				<span>Thu</span>
+				<span>Fri</span>
+				<span>Sat</span>
+				<span>Sun</span>
+			</div>
+		</header>
+
+		<div class="month_title two">
+			<h2>Dates you planned for December</h2>
+		</div>
+
+		<div class="agenda dec">
+			<ul class="agenda_dates">
+				<li>
+					<input id="01-12-15" type="checkbox" name="01-12-15" checked>
+					<label for="01-12-15"><span>1</span></label>
+				</li>
+				<li>
+					<input id="02-12-15" type="checkbox" name="02-12-15"checked>
+					<label for="02-12-15"><span>2</span></label>
+				</li>
+				<li>
+					<input id="03-12-15" type="checkbox" name="03-12-15"checked>
+					<label for="03-12-15"><span>3</span></label>
+				</li>
+				<li>
+					<input id="04-12-15" type="checkbox" name="04-12-15"checked>
+					<label for="04-12-15"><span>4</span></label>
+				</li>
+				<li>
+					<input id="05-12-15" type="checkbox" name="05-12-15"checked>
+					<label for="05-12-15"><span>5</span></label>
+				</li>
+				<li>
+					<input id="06-12-15" type="checkbox" name="06-12-15">
+					<label for="06-12-15"><span>6</span></label>
+				</li>
+				<li>
+					<input id="07-12-15" type="checkbox" name="07-12-15">
+					<label for="07-12-15"><span>7<span></label>
+				</li>
+			</ul>
+		</div>
+		
+	    <div class="counter">
+<!-- 	    	<form class="add_remove" action="" method="post">
+ -->
+		    	<h3>Space 1: <br><span class="number">15</span>/15 desks available</h3>
+			    <button class="book" type="submit" value="book">Book a desk</button>
+			    <button class="remove hide" type="submit" value="book">Remove</button>
+
+	        	<h3>Space 2: <br><span>Full</span></h3>
+	    	    <button class="test" type="submit" value="book">Full</button>
+
+	        	<h3>Space 3: <br><span class="number">5</span>/15 desks available</h3>
+	    	    <button class="test2" type="submit" value="book">Book a desk</button>
+
+		<!--   <button class="remove" type="submit" value="book"></button> -->
+		<!--   <input class="book" type="submit" value="Book">
+		  	   <input class="remove" type="submit" value="Remove"> -->
+<!-- 		  	</form>  
+ -->		</div>
+
+ 			<div class="notification_full hide" id="js-timer">
+ 		        <div class="message-icon">
+ 		          <span><img src="img/bel.svg"></span>
+ 		        </div>
+ 		        <div class="message-body">
+ 		          <p>You will get a notification when all spots are full for the day</p>
+ 		          <br/>
+ 		          <p>The nofification will disappear within a few seconds.</p>
+ 		        </div>
+ 		        <button class="message-close  js-messageClose"><span class="cross">get notifications</button>
+ 			</div>
+
+
+		 <nav class="menu">
+		   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+		   <label class="menu-open-button" for="menu-open">
+		     <span class="hamburger hamburger-1"></span>
+		     <span class="hamburger hamburger-2"></span>
+		     <span class="hamburger hamburger-3"></span>
+		   </label>
+		   
+		   <a href="index.html" class="menu-item"><img class="img2" alt="Home" src="img/calender.svg"></a>
+		   <a href="" class="notification menu-item"><img class="img2" alt="Notifications" src="img/bel.svg"></a>
+		 </nav>
+
+
+	</main>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="js/index.js"></script>
+<!-- 	<script src="js/script.js"></script>
+ --></body>
+</html>
