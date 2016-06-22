@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="sass/main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 	<title>plan a desk</title>
@@ -161,7 +161,7 @@
 					</li>
 				</ul>
 			</div>
-			
+<section class="tools">
 			<div class="calender_submits">
 			  
 			  <input class="bookDeskButton hide" type="submit" value="Book desk in room">
@@ -188,8 +188,11 @@
 			    
 			    <span class="vink vink_book hide"></span>
 			    <input class="booked remove hide" type="submit" value="Book">
-			</section> <!-- close bookDesk -->
 
+				<input class="reset hide" type="submit" value="Reset">
+
+			</section> <!-- close bookDesk -->
+</section>
 		    <section class="addOffice hide">        
 		       <div class="arrow collapsed"></div>
 		       <div class="slider slider1_bg"><h3><strong>Room 1</strong><h3></div>
@@ -228,7 +231,7 @@
 		         </ul>
 		       </section>
 
-		       <input class="done" type="submit" value="Done">
+		       <input class="reset" type="submit" value="Reset">
 
 		   	</section> <!-- close attOffice -->
 
@@ -382,6 +385,6 @@
 		</div>
 			
 	</main>
-	<script src="js/later.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

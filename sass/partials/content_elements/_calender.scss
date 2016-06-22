@@ -1,0 +1,123 @@
+.month_title:nth-of-type(1){
+	h2 {
+	margin-top: 6em;
+	}
+}
+
+.month_title {
+	padding: 10px;
+	height:1em;
+	display:block;
+
+
+	h2 {
+		margin-left: 1.5em;
+		font-weight: 600;
+		font-size: 1em;
+		margin-top: 2.5em;
+	}
+}
+
+/* agenda positioning /styling */
+.agenda:nth-of-type(2) {
+	margin-top: 7.5em;
+}
+
+.agenda {
+	margin-top: 5em;
+}
+
+.agenda_dates {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	padding-right: 1.5em;
+	margin: 0 0 0 3px;
+
+	li {
+		list-style: none;
+		display: inline-block;
+	    margin: 10px 0px -57px 10px;
+	    height: 100px;
+	    width: calc(100% * (1/7) - 10px - 1px);
+	}
+}
+
+/* agenda disabled*/
+.agenda_dates.active li:nth-of-type(n+18) span, .agenda_dates.disabled li span {
+	color: $grey;
+}
+
+/* base checkboxes moet boven staan ivm overschrijvingen*/
+.working_home_dates, .working_home_days, .agenda {
+	label {
+	    display: inline-block;
+	    cursor: pointer;
+	    position: relative;
+	    padding-left: 25px;
+	    margin-right: 15px;
+	    font-size: 13px;
+	}
+
+	label span {
+	    position: absolute;
+	    left: 22px;
+	    top: -34px;
+	    font-weight: 600;
+	}
+
+	label:before {
+	    content: "";
+	    display: inline-block;
+	    width: 53px;
+	    height: 53px;
+	    margin-right: 10px;
+	    position: absolute;
+	    left: 0;
+	    bottom: 1px;
+	    background-color: $white;
+	}
+
+	input[type=checkbox] {
+	    // position: absolute;
+	    // margin-right: 15px;
+	    // font-size: 13px;
+
+	    position: absolute;
+	    margin-left: 5px;
+	    margin-top: -19px;
+	    font-size: 13px;
+	    height: 21px;
+	    width: 42px;
+	}
+
+
+	input[type=checkbox]:checked + label:before {
+	    content: "";
+	    background-color:$checkbox-green;
+	    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	    font-size: 15px;
+	    color: #f3f3f3;
+	    text-align: center;
+	    line-height: 15px;
+	}
+	
+	/* add classes */
+	input[type=checkbox].active:checked + label:before {
+		background-color:$orange;
+	}
+
+	input[type=checkbox].test:checked + label span {
+		color:$white;
+	}
+}
+
+.number_orange {
+	color:$orange;
+}

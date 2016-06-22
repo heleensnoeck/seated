@@ -1,0 +1,31 @@
+*   {
+    margin: 0; 
+    padding: 0;
+    // outline: 1px solid lime;
+}
+
+body {
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+header {
+	position: fixed;
+	height: 2em;
+	width:100%; 
+	z-index: 1;
+}
+
+
+// hides
+.hide {
+	display:none;
+} 
+
