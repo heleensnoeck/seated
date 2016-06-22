@@ -101,7 +101,7 @@ $(document).ready(function(){
     });
     
     // close dropdown
-      $('.notification_desk').click(function () {
+      $('.notification_desk').on('click', function () {
         var isOpen = ($("#dropdown").attr("open") == "open");
         if (isOpen == true){
           $("#dropdown").removeAttr( "open" );
