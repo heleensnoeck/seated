@@ -23,14 +23,13 @@ var app = {
 var planner = { 
   selectData: function() {
     var dateClick = document.querySelectorAll('.day');
-
     var bookDeskButton = document.querySelector('.bookDeskButton');
-    
     var officeButton = document.querySelector('.officeButton');
-
     var bookDeskToolBar = document.querySelector('.bookDeskToolBar');
-
     var vinkBook = document.querySelector('.vink_book');
+
+    var plus = document.querySelector('.plus-minus-toggle');
+
 
     for(var i = 0; i < dateClick.length; i++) {  
         
@@ -62,7 +61,7 @@ var planner = {
             bookDeskToolBar.classList.add('hide');
           }, 300);
 
-           vinkBook.classList.add('hide');
+            vinkBook.classList.add('hide'); 
           
         }
       });  
@@ -73,63 +72,64 @@ var planner = {
 // herschrijven die functie /////////////////////////////
 var jan = {
    events: function () {
-      var bookDeskButton = document.querySelector('.bookDeskButton');
-      var bookDeskToolBar = document.querySelector('.bookDeskToolBar');
+    var bookDeskButton = document.querySelector('.bookDeskButton');
+    var bookDeskToolBar = document.querySelector('.bookDeskToolBar');
 
-      // attOfficeButtonClick
-      var attOfficeButton = document.querySelector('.officeButton');
-      var attOffice = document.querySelector('.addOffice');
+    // attOfficeButtonClick
+    var attOfficeButton = document.querySelector('.officeButton');
+    var attOffice = document.querySelector('.addOffice');
 
-      // vink animation
-      var vinkBook = document.querySelector('.vink_book');
-      var vink = document.querySelector('.vink');
-      var newone = vink.cloneNode(true);
+    // vink animation
+    var vinkBook = document.querySelector('.vink_book');
+    var vink = document.querySelector('.vink');
+    var newone = vink.cloneNode(true);
 
-      //Click on book desk
-      var bookButton = document.querySelector('.booked');
-      
-      attOfficeButton.addEventListener('click', function (ev) {
-        bookDeskToolBar.classList.add('hide');
-        ev.preventDefault();
-          attOffice.classList.remove('hide');
-      });
+    //Click on book desk
+    var bookButton = document.querySelector('.booked');
+    
+    attOfficeButton.addEventListener('click', function (ev) {
+      bookDeskToolBar.classList.add('hide');
+      ev.preventDefault();
+        attOffice.classList.remove('hide');
+    });
 
-      bookDeskButton.addEventListener('click', function (ev) {
-        attOffice.classList.add('hide');
-        ev.preventDefault();
-          bookDeskToolBar.classList.remove('hide');
-      });
-      
-      // animatie voor de vink   
-      bookDeskButton.addEventListener('webkitAnimationEnd', function() {
-          this.style.webkitAnimationName = '';
-      }, false); // reset animation
+    bookDeskButton.addEventListener('click', function (ev) {
+      attOffice.classList.add('hide');
+      ev.preventDefault();
+        bookDeskToolBar.classList.remove('hide');
+    });
+    
+    // animatie voor de vink   
+    bookDeskButton.addEventListener('webkitAnimationEnd', function() {
+        this.style.webkitAnimationName = '';
+    }, false); // reset animation
+   
+   
+    bookButton.addEventListener('click', function (ev) {  //  voor alle klikt op bookbutton
+      ev.preventDefault();
      
+      var dateClick = document.querySelectorAll('.day');
+      var count = 0;
      
-       bookButton.addEventListener('click', function (ev) {
-         ev.preventDefault();
+      for (var i=0; i<dateClick.length; i++) {         
+       
+        if (dateClick[i].type == "checkbox" && dateClick[i].checked === true) {
          
-         var inputElems = document.getElementsByTagName("input");
-         var count = 0;
-         
-         for (var i=0; i<inputElems.length; i++) { 
+          count++;
            
-           if (inputElems[i].type == "checkbox" && inputElems[i].checked === true) {
-             
-             count++;
-             
-             // adds checkbox color
-             inputElems[i].classList.add('active'); 
-             inputElems[i].classList.add('test'); 
-             
-             vinkBook.classList.remove('hide');
-             
-             bookDeskButton.style.webkitAnimationName = 'vink';
+           // adds checkbox color
+          dateClick[i].classList.add('active'); 
 
-           } 
-         } 
-     }); // close bookButton  
-   }
+          dateClick[i].classList.add('test'); 
+           
+          vinkBook.classList.remove('hide');
+           
+          bookDeskButton.style.webkitAnimationName = 'vink';
+
+        } 
+      } 
+    }); // close bookButton  
+  }
 };
 
  // als je op bookt hebt geklikt 
@@ -179,6 +179,9 @@ var booking = {
        
        if (state === 'available') {
            iterator--;
+
+           availableSeats.classList.add('number_orange');
+
            availableSeats.textContent = iterator;
            //toggle indicator
            indicator.classList.toggle('collapsed');
@@ -187,6 +190,8 @@ var booking = {
        } else { //state === 'booked'
            iterator++;
            availableSeats.textContent = iterator;
+
+           availableSeats.classList.remove('number_orange');
            //toggle indicator
            indicator.classList.toggle('collapsed');
            //toggle state

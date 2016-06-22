@@ -1,7 +1,7 @@
 *   {
     margin: 0; 
     padding: 0;
-    	// outline: 1px solid lime;
+    // outline: 1px solid lime;
 }
 
 
@@ -16,13 +16,18 @@ h1 {
 }
 
 h3 {
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
 	font-weight: 400;
 	font-size: 1em;
 	margin-left: 1.2em;
-	// margin-top:0.5em;
 	margin-bottom: 0.5em;
 	-webkit-font-smoothing: antialiased;
+}
+
+p {
+	color:#fff;
 }
 
 strong {
@@ -30,9 +35,19 @@ strong {
 }
 
 
+img {
+	width: 30px;
+	height: 41px;
+}
+
+// images office section
+.people {
+	width: 70px;
+	height: 70px;
+}
+
 body{
     width: 100%;
-    // width:320px;
     background-color:#F1F1F1;
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
@@ -51,6 +66,10 @@ header {
 	z-index: 1;
 }
 
+.number_orange {
+	color:#E77E23;
+}
+
 /* agenda bar */
 .month-bar {
 	position: fixed;
@@ -58,9 +77,15 @@ header {
 	margin-top: 3.2em;
 
 	.month-weekdays {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-	    flex-direction: row;
-	    flex-wrap: wrap;
+	    -webkit-box-orient: horizontal;
+	    -webkit-box-direction: normal;
+	        -ms-flex-direction: row;
+	            flex-direction: row;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
 	    margin: 1px -82px 0 32px;
 
 		 span {
@@ -104,9 +129,15 @@ header {
 }
 
 .agenda_dates {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	padding-right: 1.5em;
 	margin: 0 0 0 3px;
 
@@ -119,7 +150,9 @@ header {
 	}
 }
 
-// agenda disabled
+
+
+/* agenda disabled*/
 .agenda_dates.active li:nth-of-type(n+18) span, .agenda_dates.disabled li span {
 	color: gray;
 }
@@ -159,12 +192,19 @@ input[type=checkbox]:disabled {
 	}
 
 	input[type=checkbox] {
+	    // position: absolute;
+	    // margin-right: 15px;
+	    // font-size: 13px;
+
 	    position: absolute;
-	    margin-right: 15px;
+	    margin-left: 5px;
+	    margin-top: -19px;
 	    font-size: 13px;
+	    height: 21px;
+	    width: 42px;
 	}
-	
-	// dit is hem
+
+
 	input[type=checkbox]:checked + label:before {
 	    content: "";
 	    background-color:#9AC538;
@@ -174,66 +214,19 @@ input[type=checkbox]:disabled {
 	    text-align: center;
 	    line-height: 15px;
 	}
-
+	
+	/* add classes */
 	input[type=checkbox].active:checked + label:before {
 		background-color:#E77E23;
 	}
-}
 
-// input[type=checkbox].test:checked + li span {
-// 	color:#fff;
-// }
-.agenda_dates.test li span {
-	color: #fff;
+	input[type=checkbox].test:checked + label span {
+		color:#fff;
+	}
 }
 
 
-
-
-
-/* checkbox aspect */
-/* Base for label styling */
-.agenda_content {
-	label {
-	    display: inline-block;
-	    cursor: pointer;
-	    position: relative;
-	    padding-left: 25px;
-	    margin-right: 15px;
-	    font-size: 13px;
-	}
-
-	label span {
-		position: absolute;
-		left: 22px;
-		top: -34px;
-		font-weight: 600;
-	}
-
-	label:before {
-	    content: "";
-	    display: inline-block;
-	    width: 53px;
-	    height: 53px;
-	    margin-right: 10px;
-	    position: absolute;
-	    left: 0;
-	    bottom: 1px;
-	}
-
-	input[type=checkbox]:checked + label:before {
-	    content: "";
-	    background-color:#9AC538;
-	    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-	    font-size: 15px;
-	    color: #f3f3f3;
-	    text-align: center;
-	    line-height: 15px;
-	}
-
-}
-
-
+// vink animation
 .vink {
     position: absolute;
     width: 0.5rem;
@@ -245,11 +238,6 @@ input[type=checkbox]:disabled {
     -webkit-animation: check-inactive 0.5s ease;
 }
 
-// .vink_bookDesk {
-// 	margin-left: 1.7em;
-// 	margin-top: 0.7em;
-// }
-
 .vink_book {
   margin-left:1.2em;
   margin-top:0.7em;
@@ -258,22 +246,6 @@ input[type=checkbox]:disabled {
   left: -83px;
   right: 0;  
 }
-
-
-
-.bookDeskButton.hide, .officeButton.hide, .reset.hide {
-  display:none;
-}
-
-.vink_book.hide, .vink_reset.hide  {
-  display: none;
-}
-
-
-// .reset {
-// 	width:100%;
-// 	display:block;
-// }
 
 
 
@@ -295,12 +267,8 @@ input[type=checkbox]:disabled {
 	-webkit-animation: desk 0.5s ease;
 	float: left;
 	letter-spacing: 0.3px;
-}
-
-.remove {
-	-webkit-animation: reset 0.5s ease;
-	// animation-fill-mode: backwards;
-	-webkit-animation-fill-mode: forwards;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
 }
 
 
@@ -321,6 +289,8 @@ input[type=checkbox]:disabled {
 	width:100%;
 	background-color: #E77E23;
 	-webkit-animation: reset 0.5s ease;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
 }
 
 .reset {
@@ -332,13 +302,14 @@ input[type=checkbox]:disabled {
 }
 
 #submit {
-	animation:none;
+	-webkit-animation:none;
+	        animation:none;
 	background-color: #D9DBE0;
 }
 
 
 
-// book section
+/* book section */
 .bookDeskToolBar {
 	clear: both;
 
@@ -356,6 +327,8 @@ input[type=checkbox]:disabled {
 	    -webkit-animation: reset 0.5s ease;
 
 	    h3 {
+	    	display: -webkit-box;
+	    	display: -ms-flexbox;
 	    	display: flex;
 	    	font-weight: 400;
 	    	margin-left: 4.2em;
@@ -379,7 +352,7 @@ input[type=checkbox]:disabled {
 
 
 
-
+// plus minus booking section
 .plus-minus-toggle {
   height: 21px;
   position: absolute;
@@ -396,19 +369,25 @@ input[type=checkbox]:disabled {
         position: absolute;
         top: 0;
         width: 21px;
+        -webkit-transition: -webkit-transform 500ms ease;
+        transition: -webkit-transform 500ms ease;
         transition: transform 500ms ease;
+        transition: transform 500ms ease, -webkit-transform 500ms ease;
       }
 
       &:after {
-        transform-origin: center;
+        -webkit-transform-origin: center;
+                transform-origin: center;
       }
 
       &.collapsed {
         &:after {
-          transform: rotate(90deg);
+          -webkit-transform: rotate(90deg);
+                  transform: rotate(90deg);
         }
         &:before {
-          transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+                  transform: rotate(180deg);
         }
       }
 }
@@ -416,7 +395,7 @@ input[type=checkbox]:disabled {
 
 
 
-// attOffice section
+/* attOffice section */ 
 .addOffice {
 	clear: both;
 
@@ -453,24 +432,33 @@ input[type=checkbox]:disabled {
 
 	.content{
 	    ul.content_people {
+	      display:-webkit-box;
+	      display:-ms-flexbox;
 	      display:flex;
-	      flex-direction: row;
-	      flex-wrap: wrap;
+	      -webkit-box-orient: horizontal;
+	      -webkit-box-direction: normal;
+	          -ms-flex-direction: row;
+	              flex-direction: row;
+	      -ms-flex-wrap: wrap;
+	          flex-wrap: wrap;
 	      
 	      li {
-	       padding-left:1em;
-	       list-style: none; 
+	       padding-left:1.3em;
+	       list-style: none;
+	       margin-bottom: 1em; 
 	      }
 	    } 
 	}
 
 }
 
+// arrow office section
 .arrow,
 .arrow:before,
 .arrow:after,
 .content,
 .collapsed {
+  -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
 
@@ -478,6 +466,7 @@ input[type=checkbox]:disabled {
     position: absolute;
     margin-left: 2.2em;
     margin-top: 1.5em;
+    -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
   
     &:before {
@@ -499,87 +488,24 @@ input[type=checkbox]:disabled {
       background-color: #fff;
       position: absolute;
       right: -15px;
-      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
       }
   
       &.collapsed {
         &:after {
-          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+                  transform: rotate(-45deg);
         }
         &:before {
-          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg);
         }
       }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-// animations
-@-webkit-keyframes desk {
-    from {
-        width: 20%; 
-    }
-    to {
-        width: 50%;
-    }
-}
-
-
-@-webkit-keyframes back {
-    from {
-        width: 100%; 
-    }
-    to {
-        width: 0%;
-    }
-}
-
-@-webkit-keyframes reset {
-    from {
-        width: 25%; 
-    }
-    to {
-        width: 100%;
-    }
-}
-
-@-webkit-keyframes check-inactive {
-  25% {
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    width: 0.5rem;
-    height: 0;
-  }
-  
-}
-
-
-img {
-	width: 30px;
-	height: 41px;
-}
-
-.people {
-	width: 70px;
-	height: 70px;
-}
-
-
-// notification_full
+/* notification_full */
 .notification_toMany { 
 	display: table;
 	max-width: 337px;
@@ -643,15 +569,46 @@ img {
     left:1em;
 }
 
+
+// hides
 .hide {
 	display:none;
 } 
+
+.bookDeskButton.hide {
+  display:none;
+}
 
 .notification_toMany.hide {
 	display:none;
 } 
 
 
+/* animations */
+// Bookings toolbal animation
+@-webkit-keyframes desk {
+    from {
+        width: 20%; 
+    }
+    to {
+        width: 50%;
+    }
+}
+
+
+// vink animation
+@-webkit-keyframes check-inactive {
+  25% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    width: 0.5rem;
+    height: 0;
+  }
+}
 
 
 
