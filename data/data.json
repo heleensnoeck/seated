@@ -1,0 +1,22 @@
+{
+	"rooms": [
+		{
+			"title": "room-1",
+			"color": "space1",
+			"availableDesks": "15",
+			"bookedDesks": "6"
+		},
+		{
+			"title": "room-2",
+			"color": "space2",
+			"availableDesks": "10",
+			"bookedDesks": "5"
+		},
+		{
+			"title": "room-3",
+			"color": "space3",
+			"availableDesks": "10",
+			"bookedDesks": "1"
+		}
+	]
+}

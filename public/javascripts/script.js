@@ -106,7 +106,7 @@ var click = {
    
    
     bookButton.addEventListener('click', function (ev) {  //  voor alle klikt op bookbutton
-      ev.preventDefault();
+      //ev.preventDefault();
      
       var dateClick = document.querySelectorAll('.day');
       var count = 0;

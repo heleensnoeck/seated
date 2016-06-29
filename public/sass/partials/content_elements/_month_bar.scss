@@ -1,9 +1,10 @@
 /* agenda bar */
 .month-bar {
 	position: fixed;
-	background-color: $dark_blue;
+	background-color: $light-grey;
 	margin-top: 3.2em;
-
+    height: 5em;
+    
 	.month-weekdays {
 		display: -webkit-box;
 		display: -ms-flexbox;
