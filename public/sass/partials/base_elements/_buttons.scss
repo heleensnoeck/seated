@@ -1,30 +1,22 @@
 // bovenste buttons 
-.bookDeskButton, .officeButton, { 
+.bookDeskButton { 
 	border: none;
-	color: $white;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	text-align: center;
-	text-decoration: none;
-	display: block;
-	font-size: 16px;
-	font-weight: 400;
-	width: 50%;
-	float: left;
-	background-color: $book-desk-button-green;
-	-webkit-animation: desk 0.5s ease;
-	letter-spacing: 0.3px;
-	-webkit-appearance: none;
-	-webkit-border-radius: 0;
+    color: #fff;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+    width: 100%;
+    background-color: transparent;
+    letter-spacing: 0.3px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    font-weight: 500;
 }
 
 
-.officeButton {
-	background-color: $office-button-blue;
-}
-
-
-.booked, .reset {
+.booked, .remove {
 	border: none;
 	color: $white;
 	padding: 16px 32px;
@@ -34,28 +26,21 @@
 	font-size: 16px;
 	font-weight: 500;
 	width:100%;
-	background-color: $orange;
-	-webkit-animation: reset 0.5s ease;
+	background-color: $bg-blue;
 	-webkit-appearance: none;
 	-webkit-border-radius: 0;
 }
 
-.reset {
-	background-color: $white;
-	color: $grey;
+.booked:active {
+	background-color: #1A3755;
 }
 
-.done {
-	background-color: #E77E23;
+
+.remove {
+	background-color:#285483;
+	color: $white;
 }
 
-.bookDeskButton.hide, .officeButton.hide, .booked.hide, .reset.hide {
+.bookDeskButton.hide, .booked.hide, .remove.hide {
   display:none;
 }
-
-// .tools {
-// 	margin-top: -9em;
-// 	    position: absolute;
-// 	    width: 100%;
-// 	    z-index: 1000;
-// }

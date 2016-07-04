@@ -9,11 +9,13 @@ router.get('/', function(req, res, next) {
   
 	jsonfile.readFile('./data/data.json', function(error, obj){
 		
-		var rooms = obj.rooms;
+		// in rooms zit het object rooms
+		var rooms = obj;
 
 		jsonfile.readFile('./data/dates.json', function(error, obj){
-
-			var dates = obj.june;
+			// in dates zit het object june
+			var dates = obj;
+			// render beide files (plaats in de html zeg maar)
 			res.render('index', { rooms: rooms, dates: dates });
 
 		});
@@ -23,25 +25,66 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
+	
+	var request = req.body;
+    
+	if(request.dates) {
 
-	// Gets the information out of the form inputs that are checked.
-	console.log(req.body);
+		jsonfile.readFile('./data/dates.json', function(error, dates) {
 
-	jsonfile.readFile('./data/dates.json', function(error, obj){
-		
-		var fileObj = obj;
-		obj.june[0].status = 'notchecked';
+			for(var i = 0; i < request.dates.length; i++) {
+				
+				var requestDate = request.dates[i];
 
-		// 
+				console.log(requestDate);
 
-		jsonfile.writeFile('./data/dates.json', fileObj, function(err) {
+				for(var j = 0; j < dates.length; j++) {
+					
+					var jsonDate = dates[j];
+					
+					if (requestDate === jsonDate.date) {
+						
+						dates[j].amountOfBookings++;
+						
+					}
 
-			if(err) throw err;
+				}
+			}
 
+			jsonfile.writeFile('./data/dates.json', dates, function (err) {
+				if (err) throw err;
+			});
+			
 		});
-		
 
-	});
+	}
+	
+	if(request.radio) {
+
+		jsonfile.readFile('./data/data.json', function(error, rooms) {
+
+			for(var i = 0; i < rooms.length; i++) {
+				
+				var jsonDate = rooms[i];
+				
+				if (request.radio === rooms[i].title) {
+					
+					rooms[i].bookedDesks++;
+					
+				}
+
+			}
+
+			jsonfile.writeFile('./data/data.json', rooms, function (err) {
+				if (err) throw err;
+			});
+		
+		});
+
+
+	}
+
+	res.redirect('/');
 
 });
 

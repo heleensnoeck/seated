@@ -4,6 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="sass/main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
 <!-- 	<link rel="stylesheet" href="/dist/main.css">
  -->	<title>plan a desk</title>
 </head>
@@ -12,160 +13,94 @@
 	<main>
 
 		<header>
-			<h1>BOOK A DESK</h1>
+			<h1>Book a desk</h1>
+			<h2>June 2016</h2>
 		</header>
 
-		<header class="month-bar">
-			
-			<ul class="legend">
-			  <li><h4>availeble</h4></li>
-			  <li><h4>almost full</h4></li>
-			  <li><h4>full</h4></li>
-			  <li><h4>disabled</h4></li>
-			</ul>
-
-			<div class="month-weekdays">
-				<span>Mon</span>
-				<span>Tue</span>
-				<span>Wed</span>
-				<span>Thu</span>
-				<span>Fri</span>
-				<span>Sat</span>
-				<span>Sun</span>
-			</div>
-		</header>
+		<div class="month-weekdays">
+			<span>S</span>
+			<span>M</span>
+			<span>T</span>
+			<span>W</span>
+			<span>T</span>
+			<span>F</span>
+			<span>S</span>
+		</div>
+		
+		<hr>
 
 		<form class="agenda_content" action="/" method="post">
-			
-			<div class="month_title">
-				<h2>June</h2>
-			</div>
 		
-			<div class="agenda dec">
+			<div class="agenda">
 				<ul class="agenda_dates active">
 					<li></li>
 					<li></li>
 					<% dates.forEach(function(date) { %>
+					
+					<!-- hij load available als hij nog niet tot de 15 of de 10 is is hij bij de 15 dan word hij rood -->
 
-						<% if(date.status === "available") { %>
+					<!-- <%- date.amountOfBookings %> -->						
+						<% if(date.amountOfBookings == 0) { %>
 							<li class="is--available">
-								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="01-12-15">
-								<label for="<%- date.date %>"><span><%- date.day %></span></label>
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>"><span class="<%- date.class %>"><%- date.day %></span></label>
 							</li>
 						<% } %>
 
-						<% if(date.status === "full") { %>
+						<% if(date.amountOfBookings > 0) { %>
+							<li class="is--booked">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>"><span class="<%- date.class %>"><%- date.day %></span></label>
+							</li>
+						<% } %>
+
+						<% if(date.amountOfBookings >= 15) { %>
 							<li class="is--full">
-								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="01-12-15">
-								<label for="<%- date.date %>"><span><%- date.day %></span></label>
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>"><span class="<%- date.class %>"><%- date.day %></span></label>
 							</li>
 						<% } %>
-
-						<% if(date.status === "almostfull") { %>
-							<li class="is--almostfull">
-								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="01-12-15">
-								<label for="<%- date.date %>"><span><%- date.day %></span></label>
-							</li>
-						<% } %>
-						
-						<% if(date.status === "notavailable") { %>
-							<li>
-								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="01-12-15">
-								<label disabled for="<%- date.date %>"><span><%- date.day %></span></label>
-							</li>
-						<% } %>
-
+					
 					<% }); %>
 					
 				</ul>
 			</div>
-<section class="tools">
-			<div class="calender_submits">
-			  
-			  <!-- <button>book desk in room</button> -->
-			  <input class="bookDeskButton hide" value="Book desk in room">
-	  
-			  <input class="officeButton hide" value="Employees in room">
 			
-			</div> <!-- close calender submits -->
-			    
+			<input id="info" type="checkbox" name="information"> 
+			<label for="info"></label>
+	  						    
 			<section class="bookDeskToolBar hide"> 
-<!-- 			    <button class="book space1" type="submit" value="book" data-state="available" data-seats="15">
-			        <div class="plus-minus-toggle collapsed"></div>
-			        <h3><strong>Room 1:</strong><span class="number">15</span>/15 desks available</h3>
-			    </button>
-			
-			    <button class="book space2" type="submit" value="book" data-state="available" data-seats="6">
-			        <div class="plus-minus-toggle collapsed"></div>
-			        <h3><strong>Room 2:</strong><span class="number">6</span>/15 desks available</h3>
-			    </button>
-			    
-			    <button class="book space3" type="submit" value="book" data-state="available" data-seats="6">
-			        <div class="plus-minus-toggle collapsed"></div>
-			        <h3><strong>Room 3:</strong><span class="number">5</span>/15 desks available</h3>
-			    </button> -->
 
-			    <div class="radio-toolbar">
-					
-					<% rooms.forEach(function(room) { %>
+<% rooms.forEach(function(room) { %>
 
-						<label>
-						  <input class="book" type="radio" name="radio" value="<%- room.space %>"> 
-						  <strong><%- room.title %></strong><input name="<%- room.title %>" type="number" class="number" value="<%- room.bookedDesks %>">/<%- room.availableDesks %> desks available
+
+						<input id="<%- room.title %>" class="book" type="radio" name="radio" value="<%- room.title %>"> 
+						<label for="<%- room.title %>">
+						  <strong><%- room.title %></strong><input type="number" class="number" min="0" max="<%- room.availableDesks %>" name="<%- room.title %>" value="<%- room.bookedDesks %>"/>/<%- room.availableDesks %> desks available
+						  <button class="arrow_button" type="button" value="employees in room"><span class="arrow collapsed"></span></button>
+						  <section class="content hide">
+						    <ul class="content_people">
+						      <li><img class="people" src="img/people1.jpg" alt="images imployees"><p>Gerret</p></li>
+						      <li><img class="people" src="img/people2.jpg" alt="images imployees"><p>Marisska</p></li>
+						      <li><img class="people" src="img/people3.jpg" alt="images imployees"><p>Jan</p></li>
+						      <li><img class="people" src="img/people4.jpg" alt="images imployees"><p>Elle</p></li>
+						      <li><img class="people" src="img/people5.jpg" alt="images imployees"><p>Margo</p></li>
+						      <li><img class="people" src="img/people6.jpg" alt="images imployees"><p>Ellen</p></li>
+						    </ul>
+						  </section>
 						</label>
 
 					<% }); %>
-
 			    </div>
-			    
-			    <span class="vink vink_book hide"></span>
-			    <input class="booked remove hide" type="submit" value="Book">
 
-				<input class="reset hide" type="submit" value="Reset">
+
+
+			    <span class="checkmark hide"></span>
+			    <input class="booked fade-in button hide" name="book" type="submit" value="Book">
+
+				<input class="remove fade-in button hide" name="remove" type="submit" value="Remove">
 
 			</section> <!-- close bookDesk -->
-</section>
-		    <section class="addOffice hide">        
-		       <div class="arrow collapsed"></div>
-		       <div class="slider slider1_bg"><h3><strong>Room 1</strong><h3></div>
-		       <section class="content hide">
-		         <ul class="content_people slider1_bg">
-		           <li><img class="people" src="img/people1.jpg" alt="images imployees"><p>Gerret</p></li>
-		           <li><img class="people" src="img/people2.jpg" alt="images imployees"><p>Marisska</p></li>
-		           <li><img class="people" src="img/people3.jpg" alt="images imployees"><p>Jan</p></li>
-		           <li><img class="people" src="img/people4.jpg" alt="images imployees"><p>Elle</p></li>
-		           <li><img class="people" src="img/people5.jpg" alt="images imployees"><p>Margo</p></li>
-		           <li><img class="people" src="img/people6.jpg" alt="images imployees"><p>Ellen</p></li>
-		         </ul>
-		       </section>
-
-		       <div class="arrow collapsed"></div>
-		       <div class="slider slider2_bg"><h3><strong>Room 2</strong></h3></div>
-		       <section class="content hide">
-		         <ul class="content_people slider2_bg">
-		 	        <li><img class="people" src="img/people7.jpg" alt="images imployees"><p>Ly</p></li>
-		 	        <li><img class="people" src="img/people8.jpg" alt="images imployees"><p>Jan</p></li>
-		 	        <li><img class="people" src="img/people9.jpg" alt="images imployees"><p>Lyn</p></li>
-		 	        <li><img class="people" src="img/people10.jpg" alt="images imployees"><p>Mark</p></li>
-		 	        <li><img class="people" src="img/people11.jpg" alt="images imployees"><p>Danielle</p></li>
-		 	        <li><img class="people" src="img/people12.jpg" alt="images imployees"><p>Tom</p></li>
-		 	        <li><img class="people" src="img/people13.jpg" alt="images imployees"><p>Jan</p></li>
-		 	        <li><img class="people" src="img/people14.jpg" alt="images imployees"><p>Marrit</p></li>
-		         </ul>
-		       </section>
-
-		       <div class="arrow collapsed"></div>
-		       <div class="slider slider3_bg"><h3><strong>Room 3</strong></h3></div>
-		       <section class="content hide">
-		         <ul class="content_people slider3_bg">
-		 	        <li><img class="people" src="img/people15.jpg" alt="images imployees"><p>Rihanna</p></li>
-		 	        <li><img class="people" src="img/people16.jpg" alt="images imployees"><p>Mathijs</p></li>
-		         </ul>
-		       </section>
-
-		       <input class="reset" type="submit" value="Reset">
-
-		   	</section> <!-- close attOffice -->
 		</form>
 
 
@@ -176,12 +111,14 @@
 	        <div class="message-body">
 	          <p>Oeps..</p>
 	          <br/>
-	          <p>You cann only book five dates p.w</p>
+	          <p>You cann only book five dates in two weeks</p>
 	        </div>
 	        <button class="message-close  js-messageClose"><span class="cross"></span></button>
 		</div>
 			
 	</main>
-	<script src="javascripts/script.js"></script>
+	<script src="javascripts/script2.js"></script>
+
+	<!-- <script src="javascripts/script.js"></script> -->
 </body>
 </html>

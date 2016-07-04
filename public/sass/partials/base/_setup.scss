@@ -7,22 +7,34 @@
 body {
     width: 100%;
     margin: 0 auto;
-    font-family: 'Open Sans', sans-serif;
+    // font-family: 'Open Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-size: 1em;
+    color:$white;
+    background-color: #285483;
 }
 
 main {
 	margin: 0 auto;
-	background-color: #fff;
+    max-width: 414px;
 }
 
 header {
-	position: fixed;
-	height: 2em;
-	width:100%; 
-	z-index: 1;
+    height: 3em;
+    width: 100%;
+    z-index: 1;
+    background-color:$black;
 }
 
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 0.002em solid #3F79B7;
+    margin: 0.5em 0;
+    padding: 0;
+}
 
 // hides
 .hide {

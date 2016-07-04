@@ -1,30 +1,25 @@
-/* agenda bar */
-.month-bar {
-	position: fixed;
-	background-color: $light-grey;
-	margin-top: 3.2em;
-    height: 5em;
-    
+
+// weekDays
 	.month-weekdays {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
-	    -webkit-box-orient: horizontal;
-	    -webkit-box-direction: normal;
-	        -ms-flex-direction: row;
-	            flex-direction: row;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
-	    margin: 1px -82px 0 32px;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin-left: 2em;
+		margin-top: 0.5em;
 
 		 span {
-		 	font-size: 0.9em;
-		 	font-size: medium;
+      		font-size: 1em;
 		 	text-transform: uppercase;
 		 	font-weight: 500;
 		 	color: $white;
 		 	letter-spacing: 0.3px;
-		 	width: calc(100% * (1/7) - 10px - 1px);
+		 	width: calc(100% * (1/7) - 0px - 1px);
+		 	margin-top: 2em;
 		}
 	}
-}
+
+

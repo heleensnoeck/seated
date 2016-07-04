@@ -1,0 +1,47 @@
+	
+	input[type="checkbox"]#info {
+	    position: absolute;
+	    left: -62em;
+	} 
+
+	input[type="checkbox"]#info + label:before {
+		content: "I";
+		height: 1em;
+		padding: 0.5em;
+		border: 0.2em solid #3F79B7;
+		padding: 0.001em 0.5em;
+		border-radius: 2em;
+		font-size: 1em;
+		margin-left: 7%;
+	}
+
+	input[type="checkbox"]#info:checked + label:after {
+	  content: "You can book five days in two weeks";
+	  margin-left: 0.5em;
+	} 
+
+		// input[type=checkbox] {
+	 //      	position: absolute; 
+		// 	left: -999px;
+		// }
+
+		// input[type=checkbox]:checked + label:before {
+		// 	content: "";
+		// 	background-color: $white;
+		// 	color: $black;
+		// 	text-align: center;
+		// 	line-height: 15px;
+		// 	box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.2);	
+		// }
+
+		// input[type=checkbox]:checked + label span {
+		// 	color: $black;
+		// }
+		
+		// /* add classes */
+		// input[type=checkbox].active:checked + label:before {
+		// 	background-color:$orange;
+		// }
+
+
+
