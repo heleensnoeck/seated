@@ -1,0 +1,102 @@
+// arrow office section
+.arrow,
+.arrow:before,
+.arrow:after,
+.content,
+.collapsed {
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.arrow_button {
+  // background: $white;
+  // border: none;
+  // outline: none;
+  // margin-left:10%;
+  height: 1em;
+  width: 1em;
+  margin-left: 8%;
+}
+
+.arrow {
+    position: relative;
+    margin-left: 10%;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  
+    &:before {
+      content: " ";
+      width: 13px;
+      height: 3px;
+      left: 50%;
+      margin-left: -9px;
+      margin-top: 0.3em;
+      background-color: $black;
+      position: absolute;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      }
+
+      &:after {
+      content: " ";
+      width: 13px;
+      height: 3px;
+      background-color: $black;
+      position: absolute;
+      right: -12px;
+      margin-top: 0.3em;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+      }
+  
+      &.collapsed {
+        &:after {
+          -webkit-transform: rotate(-45deg);
+                  transform: rotate(-45deg);
+        }
+        &:before {
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg);
+        }
+      }
+}
+
+
+.checkmark {
+    display: block;
+    position: relative;
+    z-index: 10;
+}
+
+
+.checkmark:after {
+    -webkit-animation: check .5s;
+    -moz-animation: check .5s ;
+    -o-animation: check .5s;
+    animation: check .5s;
+}
+
+.checkmark:after {
+  -moz-transform: scaleX(-1) rotate(135deg);
+  -ms-transform: scaleX(-1) rotate(135deg);
+  -webkit-transform: scaleX(-1) rotate(135deg);
+  transform: scaleX(-1) rotate(135deg);
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  border-right: 5px solid $white;
+  border-top: 5px solid $white;
+  content: '';
+  display: block;
+  height: 16px;
+  left: 32%;
+  position: absolute;
+  top: 23px;
+  width: 10px;
+}
+
+
+.checkmark.hide {
+  display: none;
+}

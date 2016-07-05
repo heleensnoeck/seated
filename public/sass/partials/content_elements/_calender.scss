@@ -1,0 +1,146 @@
+// style alle dates in the agenda
+
+.agenda {
+	margin: 0 auto;
+	width: 90%;
+	margin-left: 3%;
+	margin-bottom: 0.5em;
+
+	.agenda_dates {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+
+		li {
+			list-style: none;
+			display: inline-block;
+			margin: 1.3em 0.7em -5em 0.5em;
+			height: 100px;
+			width: calc(100% * (1/7) - 0.625em - 0.6em);
+		}
+	}
+}
+
+// style all labels agenda
+.agenda {
+	label {
+	    display: inline-block;
+	    cursor: pointer;
+	    position: relative;
+	    padding-left: 25px;
+	    margin-right: 15px;
+	    font-size: 13px;
+	}
+
+	label span {
+		position: absolute;
+		left: 14px;
+		top: -27px;
+		font-weight: 600;
+		z-index: 2;
+		color: #fff;
+	}
+
+	.date--left  {
+		left: 11px;
+	}
+
+	label:before {
+		content: "";
+		display: inline-block;
+		width: 2.7em;
+		height: 2.7em;
+		position: absolute;
+		left: 0;
+		bottom: 1px;
+		border-radius: 0.3em;
+	}
+
+
+	input[type=checkbox] {
+      	position: absolute; 
+		left: -999px;
+	}
+
+	input[type=checkbox]:checked + label:before {
+		content: "";
+		background-color: $white;
+		color: $black;
+		text-align: center;
+		line-height: 15px;
+    	box-shadow: 0px 2px 8px 2px rgba(0,0,0,0.2);	
+	}
+
+
+	input[type=checkbox]:checked + label:after {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		left: 0.8em;
+		top: -0.25em;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+		border-top: 7px solid #fff;
+	}
+
+	input[type=checkbox]:checked + label span {
+		color: #14B8FF;
+	}
+	
+	/* add classes */
+	input[type=checkbox].active:checked + label:before {
+		background-color:$orange;
+	}
+
+	input[type=checkbox].test:checked + label span {
+		color:$white;
+	}
+}
+
+li.is--available label:before {
+}
+
+// li.is--full label:before {
+// 	color: $disabled-font;
+// 	background-color:$disabled;
+// }
+
+li.is--full label span {
+	color: #CCCCCC;
+}
+
+li.is--booked label:before {
+	color: $white;
+	background-color: #1A3755;
+}
+
+input[type="checkbox"] label[disabled]:before {
+	color: $white;
+	background-color: $light-grey;
+}
+
+
+input[type="checkbox"]:focus + label:before, label:focus {
+  -moz-box-shadow: 0 0 5px 5px #14B8FF;
+  -webkit-box-shadow: 0 0 5px 5px #14B8FF;
+  box-shadow: 0 0 5px 5px #14B8FF;
+  z-index: 1;
+}
+
+
+// // disabled 
+// .agenda_dates.active li:nth-of-type(n+18) label:before {
+//   background-color:$disabled;
+// }
+
+//  agenda disabled
+// .agenda_dates.active li:nth-of-type(n+18) span, .agenda_dates.disabled li span {
+// 	color: $disabled-font;
+// }

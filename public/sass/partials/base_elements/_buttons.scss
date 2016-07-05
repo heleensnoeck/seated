@@ -1,0 +1,46 @@
+// bovenste buttons 
+.bookDeskButton { 
+	border: none;
+    color: #fff;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+    width: 100%;
+    background-color: transparent;
+    letter-spacing: 0.3px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    font-weight: 500;
+}
+
+
+.booked, .remove {
+	border: none;
+	color: $white;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	font-weight: 500;
+	width:100%;
+	background-color: $bg-blue;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+}
+
+.booked:active {
+	background-color: #1A3755;
+}
+
+
+.remove {
+	background-color:#285483;
+	color: $white;
+}
+
+.bookDeskButton.hide, .booked.hide, .remove.hide {
+  display:none;
+}

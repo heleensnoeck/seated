@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="sass/main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+<!-- 	<link rel="stylesheet" href="/dist/main.css">
+ -->	<title>plan a desk</title>
+</head>
+
+<body>
+	<main>
+
+		<header>
+			<h1>Book a desk</h1>
+			<h2>June 2016</h2>
+		</header>
+
+		<div class="month-weekdays">
+			<span>S</span>
+			<span>M</span>
+			<span>T</span>
+			<span>W</span>
+			<span>T</span>
+			<span>F</span>
+			<span>S</span>
+		</div>
+		
+		<hr>
+
+		<form class="agenda_content" action="/" method="post">
+		
+			<div class="agenda">
+				<ul class="agenda_dates active">
+					<li></li>
+					<li></li>
+					<% dates.forEach(function(date) { %>
+					
+					<!-- hij load available als hij nog niet tot de 15 of de 10 is is hij bij de 15 dan word hij rood -->
+
+					<!-- <%- date.amountOfBookings %> -->						
+						<% if(date.amountOfBookings == 0) { %>
+							<li class="is--available">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>"><span class="<%- date.class %>"><%- date.day %></span></label>
+							</li>
+						<% } %>
+
+						<% if(date.amountOfBookings > 0) { %>
+							<li class="is--booked">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>"><span class="<%- date.class %>"><%- date.day %></span></label>
+							</li>
+						<% } %>
+
+						<% if(date.amountOfBookings >= 15) { %>
+							<li class="is--full">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>"><span class="<%- date.class %>"><%- date.day %></span></label>
+							</li>
+						<% } %>
+					
+					<% }); %>
+					
+				</ul>
+			</div>
+			
+			<input id="info" type="checkbox" name="information"> 
+			<label for="info"></label>
+	  						    
+			<section class="bookDeskToolBar hide"> 
+
+<% rooms.forEach(function(room) { %>
+
+
+						<input id="<%- room.title %>" class="book" type="radio" name="radio" value="<%- room.title %>"> 
+						<label for="<%- room.title %>">
+						  <strong><%- room.title %></strong><input type="number" class="number" min="0" max="<%- room.availableDesks %>" name="<%- room.title %>" value="<%- room.bookedDesks %>"/>/<%- room.availableDesks %> desks available
+						  <button class="arrow_button" type="button" value="employees in room"><span class="arrow collapsed"></span></button>
+						  <section class="content hide">
+						    <ul class="content_people">
+						      <li><img class="people" src="img/people1.jpg" alt="images imployees"><p>Gerret</p></li>
+						      <li><img class="people" src="img/people2.jpg" alt="images imployees"><p>Marisska</p></li>
+						      <li><img class="people" src="img/people3.jpg" alt="images imployees"><p>Jan</p></li>
+						      <li><img class="people" src="img/people4.jpg" alt="images imployees"><p>Elle</p></li>
+						      <li><img class="people" src="img/people5.jpg" alt="images imployees"><p>Margo</p></li>
+						      <li><img class="people" src="img/people6.jpg" alt="images imployees"><p>Ellen</p></li>
+						    </ul>
+						  </section>
+						</label>
+
+					<% }); %>
+			    </div>
+
+
+
+			    <span class="checkmark hide"></span>
+			    <input class="booked fade-in button hide" name="book" type="submit" value="Book">
+
+				<input class="remove fade-in button hide" name="remove" type="submit" value="Remove">
+
+			</section> <!-- close bookDesk -->
+		</form>
+
+
+    	<div class="notification_toMany hide" id="js-timer2">
+	        <div class="message-icon">
+	          <span><img src="img/attention.svg"></span>
+	        </div>
+	        <div class="message-body">
+	          <p>Oeps..</p>
+	          <br/>
+	          <p>You cann only book five dates in two weeks</p>
+	        </div>
+	        <button class="message-close  js-messageClose"><span class="cross"></span></button>
+		</div>
+			
+	</main>
+	<script src="javascripts/script2.js"></script>
+
+	<!-- <script src="javascripts/script.js"></script> -->
+</body>
+</html>

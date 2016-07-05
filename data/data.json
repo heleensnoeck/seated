@@ -1,0 +1,63 @@
+[  
+   {  
+      "title":"Room 1:",
+      "class":"fade-in three label",
+      "availableDesks":15,
+      "bookedDesks":13,
+      "images":[  
+         {  
+            "src":"img/people1.jpg"
+         },
+         {  
+            "src":"img/people2.jpg"
+         },
+         {  
+            "src":"img/people3.jpg"
+         },
+         {  
+            "src":"img/people4.jpg"
+         }
+      ],
+      "message":"This room is available on the <strong>3e</strong> and <strong>4e</strong> but not on the <strong>6e</strong>"
+   },
+   {  
+      "title":"Room 2:",
+      "class":"fade-in two label",
+      "availableDesks":10,
+      "bookedDesks":9,
+      "images":[  
+         {  
+            "src":"img/people1.jpg"
+         },
+         {  
+            "src":"img/people2.jpg"
+         },
+         {  
+            "src":"img/people3.jpg"
+         },
+         {  
+            "src":"img/people4.jpg"
+         }
+      ],
+   },
+   {  
+      "title":"Room 3:",
+      "class":"fade-in one label",
+      "availableDesks":10,
+      "bookedDesks":7,
+      "images":[  
+         {  
+            "src":"img/people1.jpg"
+         },
+         {  
+            "src":"img/people2.jpg"
+         },
+         {  
+            "src":"img/people3.jpg"
+         },
+         {  
+            "src":"img/people4.jpg"
+         }
+      ],
+   }
+]
