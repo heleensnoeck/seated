@@ -1,14 +1,14 @@
 ##The client
-The assignment comes from a company called Damco. Damco is a internation Danish company and specialized in logistics.
+De opdracht komt van Damco. Damco is een internationaal bedrijf gespecialiseert in logistiek. 
 
 ##The assignment
-Damco recently opend an office in the Netherlands (the Hague). In this office there are more employees then desks available. So there are people coming to the office for nothing. To avoid this, they asked me to develop a application.
+Damco heeft zins kort een kantoor geopend in Nederland (Den Haag). In het gebouw zijn meer werknemers dan desks aanwezig. Dus mensen komen naar het kantoor voor niks. Om dit te voorkomen hebben ze mij gevraagt een web app te ontwikkelen
 
 ##The solution
-I developed a application were employees can book a desk. My goal for this application was a simple interface that is fast to use and easy to understand.
+Ik heb een applicatie ontwikkeld waar werknemers van damco een desk in kunnen boeken. 
 
 ##The application
-sorry not online yet.
+sorry not niet online
 
 ##Application
 Op het homescherm zie je een overzicht van de eerste twee weken van de maand Juli. Flexwerkers kunnen steeds twee weken vooruit boeken en dan max. 5 dagen. (dit is omdat er veel minder bureaus zijn dan werknemers en we de kansen gelijk willen houden.)  
