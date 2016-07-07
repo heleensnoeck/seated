@@ -16,12 +16,15 @@ Op het homescherm zie je een overzicht van de eerste twee weken van de maand Jul
 ##Select date (met js)
 Als je een datum selecteerd, zie je het boekings schema verschijnen. In het bookings schema is een selected default state te zien. Deze state geeft de beste room aan (room met het minste mensen) ook is deze room al checked zodat de gebruiker direct kan boeken. 
 
-![alt tag](https://github.com/heleensnoeck/browser_technologie/blob/master/week%204/screenshots1/Schermafbeelding%202016-04-17%20om%2012.11.12.png) 
+###First state
+![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/colapsed.png) 
+
+###Second state
+![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/selected.png) 
 
 ##Zonder (js)
 Zonder js zijn er twee dingen anders.
 Je hebt geen default state en het boekings schema is direct te zien. 
-  
   
 ##Technical structure
 De applicatie is gebouwd met:
@@ -330,7 +333,7 @@ script.js
 ![alt tag](https://github.com/heleensnoeck/browser_technologie/blob/master/week%204/screenshots1/Schermafbeelding%202016-04-17%20om%2012.11.12.png) 
 
 ##Tab true
-![alt tag](https://github.com/heleensnoeck/browser_technologie/blob/master/week%204/screenshots1/Schermafbeelding%202016-04-17%20om%2012.11.12.png) 
+![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/tab.png) 
 
 ## Wanted to/nice to have 
 - 1 Json bestand. Het bestand data.json zou dan toegevoed worden aan dates.json zo kan er voor elke datum bijgehouden worden in welke room is geboeked. Als de gebruiker dan weer op een geboekte date klikt word er uit de database de geboekte room gehaald. Om deze vervolgens als een gebookte state te laten zien in de bookroom toolbar. Zo kan de gebruiker makkelijk zien in welke rooms hij ingeboeked is per datum en kan hij zijn boeking ook gemakkelijk ongedaan maken. 
