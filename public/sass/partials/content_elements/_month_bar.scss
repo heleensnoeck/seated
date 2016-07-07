@@ -1,0 +1,46 @@
+//weekDays
+.month-weekdays {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: row;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	        flex-direction: row;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-left: 2em;
+	margin-top: 0.5em;
+
+	 span {
+  		font-size: 1em;
+	 	text-transform: uppercase;
+	 	font-weight: 500;
+	 	color: $white;
+	 	letter-spacing: 0.3px;
+	 	width: calc(100% * (1/7) - 0px - 0.001em);
+	 	margin-top: 2em;
+	}
+}
+
+// Als calc en flexbox niet werken 
+// .month-weekdays
+// {
+// 	display:table;
+// 	width:100%;
+// 	border:none;
+// 	position: relative;
+// 	z-index: 10;
+
+//   span {
+    // font-size: 1em;
+    // text-transform: uppercase;
+    // font-weight: 500;
+    // letter-spacing: 0.3px;
+    // padding-left: 10%;
+    // width: 100%;
+    // -moz-box-sizing: border-box;
+    // box-sizing: border-box;
+//   }
+// }
+

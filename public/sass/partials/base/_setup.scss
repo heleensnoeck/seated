@@ -1,0 +1,40 @@
+*   {
+    margin: 0; 
+    padding: 0;
+    // outline: 1px solid lime;
+}
+
+body {
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Lato','Helvetica', 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1em;
+    color:$white;
+    background-color: $bg-blue;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 26em;
+}
+
+header {
+    height: 3em;
+    width: 100%;
+    z-index: 1;
+    background-color:$black;
+}
+
+hr {
+    display: block;
+    height: 0.001em;
+    border: 0;
+    border-top: 0.002em solid $border;
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+.hide {
+    display:none;
+} 

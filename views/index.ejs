@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="dist/main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+ 	<title>plan a desk</title>
+</head>
+
+<body>
+	<main>
+
+		<header>
+			<h1>Book a desk</h1>
+			<h2>June 2016</h2>
+		</header>
+
+		<div class="month-weekdays">
+			<span>S</span>
+			<span>M</span>
+			<span>T</span>
+			<span>W</span>
+			<span>T</span>
+			<span>F</span>
+			<span>S</span>
+		</div>
+		
+		<hr>
+
+		<form class="agenda_content" action="/" method="post">
+		
+			<div class="agenda">
+				<ul class="agenda_dates active">
+					<li></li>
+					<li></li>
+					<% dates.forEach(function(date) { %>
+				
+					<!-- <%- date.amountOfBookings %> -->						
+						<% if(date.amountOfBookings == 0) { %>
+							<li class="is--available">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>">
+									<span class="<%- date.class %>"><%- date.day %></span>
+								</label>
+							</li>						
+
+						<% } else if(date.amountOfBookings > 0 && date.amountOfBookings <= 14) { %>
+							<li class="is--booked">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>" >
+								<label for="<%- date.date %>">
+									<span class="<%- date.class %>"><%- date.day %></span>
+								</label>
+							</li>
+
+						<% } else { %>
+							<li class="is--full">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<label for="<%- date.date %>">
+									<span class="<%- date.class %>"><%- date.day %></span>
+								</label>
+							</li>
+						<% } %>
+					
+					<% }); %>	
+				</ul>
+			</div>
+			
+			<input id="info" type="checkbox" name="information"> 
+			<label for="info"></label>
+	  						    
+			<div class="bookDeskToolBar"> 
+			
+			<% rooms.forEach(function(room) { %>
+				
+				<div class="radio-toolbar <%- room.animation %>">
+				
+				<% if(room.bookedDesks == 0) { %>
+					
+					<label for="<%- room.id %>">
+					  <input id="<%- room.id %>" class="book" type="radio" name="radio" value="<%- room.title %>"> 
+					  <strong><%- room.title %></strong>
+					</label>
+
+					<input type="number" class="number" min="0" max="<%- room.availableDesks %>" name="<%- room.title %>" value="<%- room.bookedDesks %>" disabled="disabled">/<%- room.availableDesks %> desks available	
+			
+				<% } else if (room.bookedDesks > 0 && room.bookedDesks <= 14) { %>
+					<label for="<%- room.id %>">
+					  <input id="<%- room.id %>" class="book" type="radio" name="radio" value="<%- room.title %>"> 
+					  <strong><%- room.title %></strong>
+					</label>
+
+					<input type="number" class="number" min="0" max="<%- room.availableDesks %>" name="<%- room.title %>" value="<%- room.bookedDesks %>" disabled="disabled">/<%- room.availableDesks %> desks available	
+
+				<% } else { %>
+
+					<label for="<%- room.id %>" class="label--disabled">
+					  <input id="<%- room.id %>" class="book" type="radio" name="radio" value="<%- room.title %>" disabled="disabled"> 
+					  <strong><%- room.title %></strong>
+					</label/>
+					
+					<input type="number" class="number" min="0" max="<%- room.availableDesks %>" name="<%- room.title %>" value="<%- room.bookedDesks %>" disabled="disabled">/<%- room.availableDesks %> desks available	
+
+				<% } %>		
+									  
+					 <label for="<%- room.label %>">
+						<input type="checkbox" id="<%- room.label %>" class="<%- room.bookedDesks %> tooltip-input" name="radio" value="employees in room"> 
+						<span class="arrow"></span>
+						 
+						<div class="tooltip-content">
+						 <ul class="content_people">
+						   <% room.images.forEach(function(image) { %>
+						     <li>
+						       <img class="people" src="<%- image.src %>" alt="images imployees">
+						       <p><%- image.name %></p>
+						     </li>
+						     <% }); %>
+						  </ul>
+						</div> <!--/.tooltip-content -->
+					</label>
+				</div>
+
+			<% }); %>
+		
+			    <span class="checkmark hide"></span>
+			    <input class="booked fade-in button" name="book" type="submit" value="Book">
+			
+				<input class="remove fade-in button" name="remove" type="submit" value="Remove">
+
+			</div> <!-- close bookDesk -->
+		</form>
+
+    	<div class="notification_toMany hide" id="js-timer2">
+	        <div class="message-icon">
+	          <span><img src="img/attention.svg" alt="attention_image"></span>
+	        </div>
+	        <div class="message-body">
+	          <p>Oeps..</p>
+	          <br/>
+	          <p>You cann only book five dates in two weeks</p>
+	        </div>
+	        <button class="message-close  js-messageClose"><span class="cross"></span></button>
+		</div>
+			
+	</main>
+<!-- 	<script>
+		// https://www.youtube.com/watch?v=zbMJtxDD-4I
+		var cutsTheMustard = ('querySelector' in document && 'addEventListener' in window)
+		var js; 
+
+		if(cutsTheMustard) {
+			js = document.createElement('script');
+			js.src = '/javascripts/script.js';
+			js.async = true; 
+			document.querySelector('script').parentNode.appendChild(js);
+		}
+	</script> -->
+	<script src="dist/script.js"></script>
+	</body>
+</html>

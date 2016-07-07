@@ -1,0 +1,23 @@
+.booked, .remove {
+	border: none;
+	color: $white;
+	padding: 1em 2em;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-size: 1em;
+	font-weight: 500;
+	width:100%;
+	background-color: $booked-numbers;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+}
+
+.remove {
+	background-color: $bg-blue;
+	color: $white;
+}
+
+.booked.hide, .remove.hide {
+  display:none;
+}

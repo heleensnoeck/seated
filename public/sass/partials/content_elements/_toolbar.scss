@@ -1,0 +1,29 @@
+/* bookDesk Toolbar section */
+.bookDeskToolBar {
+	clear: both;
+	margin-top: 0.9em;
+
+	.book {
+		position: absolute; 
+		left: -62em;
+	}
+}
+
+// style the input number
+input[type='number'] {
+	background-color: transparent;
+	border: transparent;
+	font-size: 1em;
+	color: $booked-numbers;
+	font-family: inherit;
+	letter-spacing: 0.02em;
+	font-weight: 400;
+}
+
+// +- of input number
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button {  
+   opacity: 0;
+}
+
+
