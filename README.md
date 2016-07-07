@@ -338,6 +338,6 @@ Bekijk het via > systeemsvoorkeuren > toegankelijkheid > gebruik grijstinten
 ## Wanted to/nice to have 
 - 1 Json bestand. Het bestand data.json zou dan toegevoed worden aan dates.json zo kan er voor elke datum bijgehouden worden in welke room is geboeked. Als de gebruiker dan weer op een geboekte date klikt word er uit de database de geboekte room gehaald. Om deze vervolgens als een gebookte state te laten zien in de bookroom toolbar. Zo kan de gebruiker makkelijk zien in welke rooms hij ingeboeked is per datum en kan hij zijn boeking ook gemakkelijk ongedaan maken. 
 
-![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/booked.png) 
+![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/bookedroom.png) 
 
 - Het verwijderen van je geboekte room en datum. 
