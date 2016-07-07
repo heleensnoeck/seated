@@ -20,7 +20,7 @@ Als je een datum selecteerd, zie je het boekings schema verschijnen. In het book
 ![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/colapsed.png) 
 
 ###Second state
-![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/selected.png) 
+![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/second_state.png) 
 
 ##Zonder (js)
 Zonder js zijn er twee dingen anders.
@@ -330,7 +330,7 @@ script.js
 ###Javascript rendering on the server. 
 
 ##Kleurenblind
-![alt tag](https://github.com/heleensnoeck/browser_technologie/blob/master/week%204/screenshots1/Schermafbeelding%202016-04-17%20om%2012.11.12.png) 
+Bekijk het via > systeemsvoorkeuren > toegankelijkheid > gebruik grijstinten
 
 ##Tab true
 ![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/tab.png) 
