@@ -341,3 +341,4 @@ Bekijk het via > systeemsvoorkeuren > toegankelijkheid > gebruik grijstinten
 ![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/bookedroom.png) 
 
 - Het verwijderen van je geboekte room en datum. 
+- bookbutton disabeld als er 5 booked dates zijn. 
