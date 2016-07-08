@@ -8,7 +8,7 @@ Damco heeft zins kort een kantoor geopend in Nederland (Den Haag). In het gebouw
 Ik heb een applicatie ontwikkeld waar werknemers van damco een desk in kunnen boeken. 
 
 ##The application
-sorry not niet online
+sorry nog niet online
 
 ##Application
 Op het homescherm zie je een overzicht van de eerste twee weken van de maand Juli. Flexwerkers kunnen steeds twee weken vooruit boeken en dan max. 5 dagen. (dit is omdat er veel minder bureaus zijn dan werknemers en we de kansen gelijk willen houden.)  
