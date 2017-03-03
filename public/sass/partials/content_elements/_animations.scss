@@ -1,40 +1,33 @@
-/* animations */
-.fade-in.button {
-  -webkit-animation-delay: 1.3s;
-  -moz-animation-delay: 1.3s;
+.checkmark {
+    display: block;
+    position: relative;
+    z-index: 10;
 }
 
-.fade-in.one {
-  -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
+.checkmark:after {
+    -webkit-animation: check .8s;
+    animation: check .8s;
 }
 
-.fade-in.two {
-  -webkit-animation-delay: 0.7s;
-  animation-delay: 0.7s;
+.checkmark:after {
+  -webkit-transform: scaleX(-1) rotate(135deg);
+  transform: scaleX(-1) rotate(135deg);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  border-right: 0.313em solid $white;
+  border-top: 0.313em solid $white;
+  content: '';
+  display: block;
+  height: 1em;
+  left: 32%;
+  position: absolute;
+  top: 1.438em;
+  width: 0.625em;
 }
 
-.fade-in.three {
-  -webkit-animation-delay: 0.9s;
-  animation-delay: 0.9s;
+.checkmark.hide {
+  display: none;
 }
-
-/* make keyframes that tell the start state and the end state of our object */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-.fade-in {
-  opacity:0;  /* make things invisible upon start */
-  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-  animation:fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-  animation-fill-mode:forwards;
-
-  -webkit-animation-duration:0.5s;
-  animation-duration:0.5s;
-}
-
 
 // checkmark
 @-webkit-keyframes check {
@@ -71,17 +64,3 @@
         height: 0;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

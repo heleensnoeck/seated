@@ -1,18 +1,13 @@
 @import "partials/base/_colors";
-@import "partials/base/_images";
 @import "partials/base/_reset";
 @import "partials/base/_setup";
 
 // base elements
 @import "partials/base_elements/_buttons";
-@import "partials/base_elements/_icons";
-
 // content elements
 @import "partials/content_elements/_animations";
 @import "partials/content_elements/_calender";
 @import "partials/content_elements/_month_bar";
-@import "partials/content_elements/_notification";
 @import "partials/content_elements/_toolbar";
-@import "partials/content_elements/_tooltips";
 
 

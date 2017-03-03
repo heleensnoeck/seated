@@ -1,3 +1,8 @@
+.booked:disabled {
+    background: $dark-grey-disabled;
+    color: $light-grey-disabled;
+}
+
 .booked, .remove {
 	border: none;
 	color: $white;
@@ -8,16 +13,28 @@
 	font-size: 1em;
 	font-weight: 500;
 	width:100%;
-	background-color: $booked-numbers;
 	-webkit-appearance: none;
 	-webkit-border-radius: 0;
 }
 
+.booked {
+	background-color: $booked-numbers;
+
+	&.booking {
+		background-color: #1A3755;
+	}
+}
+
 .remove {
 	background-color: $bg-blue;
-	color: $white;
+
+	&.removing {
+		background-color: #1A3755;
+	}
 }
 
 .booked.hide, .remove.hide {
   display:none;
 }
+
+

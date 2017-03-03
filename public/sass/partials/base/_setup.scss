@@ -10,29 +10,87 @@ body {
     font-family: 'Lato','Helvetica', 'Arial', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 1em;
-    color:$white;
-    background-color: $bg-blue;
+    background-color: $bg;
 }
 
 main {
     margin: 0 auto;
     max-width: 26em;
+    background: linear-gradient(172deg,#31a5e0 98px,#f9f9f9 104px);
+    box-shadow: aliceblue;
+    box-shadow: 2px 6px 5px black;
+}
+
+li {
+    list-style:none;
 }
 
 header {
-    height: 3em;
-    width: 100%;
-    z-index: 1;
-    background-color:$black;
+    margin-bottom: 1em;
+        ul {
+            li {
+                display: inline-block;
+                vertical-align: -webkit-baseline-middle;
+                padding: 1em 0em 0.5em 1em;
+                color: $white;
+            }
+        }
+}
+
+.month {
+    ul {
+        width: 100%;
+        position: relative;
+
+        #monthName {
+            padding: 0.5em;
+        }
+
+        #prevMonth, #nextMonth, .monthName {
+            position: absolute;
+            top: calc(50% - 15px);
+            cursor: pointer;
+            padding: 5px;
+            display: block;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: $black;
+        }
+
+        #prevMonth {
+            left: 10px;
+        }
+
+        #nextMonth {
+            right: 10px;
+        }
+    }
+}
+
+.information {
+    ul {
+
+        li {
+          list-style:none;
+
+             &:before {
+                content: '\2022';
+                font-size: 2em;
+                padding: 0.5em;
+                vertical-align: sub;
+                color: $orange;     
+            }
+        }
+        li.green:before {
+            color: $green;
+        }
+    }
 }
 
 hr {
-    display: block;
-    height: 0.001em;
-    border: 0;
-    border-top: 0.002em solid $border;
-    margin: 0.5em 0;
-    padding: 0;
+    border-top: .2em solid $blue;
+    width: 24%;
+    margin: 0 auto;
 }
 
 .hide {
