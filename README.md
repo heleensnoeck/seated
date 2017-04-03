@@ -11,20 +11,10 @@ Ik heb een applicatie ontwikkeld waar werknemers van damco een desk in kunnen bo
 sorry nog niet online
 
 ##Application
-Op het homescherm zie je een overzicht van de eerste twee weken van de maand Juli. Flexwerkers kunnen steeds twee weken vooruit boeken en dan max. 5 dagen. (dit is omdat er veel minder bureaus zijn dan werknemers en we de kansen gelijk willen houden.)  
+Op het homescherm zie je een overzicht een calender van de maand waarin je nu zit. Standaart werk je thuis en als je op kantoor wil werken moet je boeken. De boek button is eerst nog disabled maar als je een datum aanklinkt enabeld hij.  
 
-##Select date (met js)
-Als je een datum selecteerd, zie je het boekings schema verschijnen. In het bookings schema is een selected default state te zien. Deze state geeft de beste room aan (room met het minste mensen) ook is deze room al checked zodat de gebruiker direct kan boeken. 
-
-###First state
-![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/colapsed.png) 
-
-###Second state
-![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/second_state.png) 
-
-##Zonder (js)
-Zonder js zijn er twee dingen anders.
-Je hebt geen default state en het boekings schema is direct te zien. 
+###Home screen
+![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/home.png) 
   
 ##Technical structure
 De applicatie is gebouwd met:
@@ -40,8 +30,18 @@ De applicatie is gebouwd met:
 |--Meesterproef
 |	|--bin
 |	|--data
-|		|--data.json
-|		|--dates.json			
+|		|--april.json
+|		|--august.json
+|		|--december.json
+|		|--february.json
+|		|--january.json
+|		|--july.json
+|		|--june.json
+|		|--march.json
+|		|--may.json
+|		|--november.json
+|		|--october.json
+|		|--september.json			
 |   |--node-modules
 |   |--public
 |   	|--dist
@@ -52,19 +52,15 @@ De applicatie is gebouwd met:
 |      	|--partials
 |           |--base
 |				|--_colors.scss
-|				|--_images.scss
 |				|--_reset.scss
 |				|--_setup.scss
 |           |--base_elements
 |           	|--_buttons.scss
-|           	|--_icons.scss
 |           |--content_elements
 |           	|--_animations.scss
 |           	|--_calender.scss
 |       		|--_month_bar.scss
-|       		|--_notification.scss
 |       		|--_toolbar.scss
-|       		|--_tooltips.scss
 |       |--main.css
 |       |--main.css.map
 |       |--main.scss
@@ -73,38 +69,35 @@ De applicatie is gebouwd met:
 |	|--views
 |       |--error.ejs
 |       |--index.ejs
-|       |--app.js
-|       |--npm-debug.log
-|       |--package.json
+|   |--app.js
+|   |--gulpfile.js
+|   |--package.json
 ```
 
 ##Code
 De app is server-side opgebouwd de structuur is als volgd.
 
 ###json 
-Twee json files dienen als database. 
+Er zijn 12 json files die dienen als database. 
 
 ```
-[{
-	"title": "Room 1:",
-	"animation": "fade-in three",
-	"availableDesks": 15,
-	"bookedDesks": 5,
-	"id": "room_one",
-	"images": [{
-		"src": "img/people1.jpg",
-		"name": "Gerret"
-	}, {
-		"src": "img/people2.jpg",
-		"name": "Marisska"
-	}, {
-		"src": "img/people3.jpg",
-		"name": "Jan"
-	}, {
-		"src": "img/people4.jpg",
-		"name": "Elle"
-	}]
-}
+[
+	{
+      "date":"01-04-16",
+      "amountOfBookings":0,
+      "day":"1"
+   },
+   {  
+      "date":"02-04-16",
+      "amountOfBookings":0,
+      "day":"2"
+   },
+   {  
+      "date":"03-04-16",
+      "amountOfBookings":0,
+      "day":"3"
+   }
+]
 ```
 
 ###routes
@@ -112,21 +105,33 @@ Een rout file die de json files uitlezen en updaten met het get en post.
  
 ```
 router.get('/', function(req, res, next) {
-  
-	jsonfile.readFile('./data/data.json', function(error, obj){
-		
-		// in rooms zit het object rooms
-		var rooms = obj;
 
-		jsonfile.readFile('./data/dates.json', function(error, obj){
-			// in dates zit het object june
-			var dates = obj;
-			// render beide files 
-			res.render('index', { rooms: rooms, dates: dates });
+	var params = req.query; // alles wat achter de ? komt (querystring) 
+	var request = req.body; // je html
+	var monthArray = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+	var monthParam = params.month; // haalt de maand uit de querystring
+	// Controleer of een maand is doorgegeven aan de querystring
+	if(!(monthParam >= 1 && monthParam <= 12) || !monthParam) { // als dit niet zo is OF de maand niet valide is, haal dan de maand die het nu is op
 
+		var d = new Date(); // je maakt de datum van vandaag aan
+		var n = d.getMonth();  // haalt de index van de maand op 
+		var month = monthArray[n]; // haal de text op
+
+		jsonfile.readFile('./data/' + month + '.json', function(error, obj){ // zoek de naam van de maand op uit de json file in map data
+			var dates = obj; // sla object uit json file op
+			res.render('index', { dates: dates }); // render het via het html template
 		});
 
-	});
+    } else { // als er al een maand is meegegeven dan
+
+		var month = monthArray[monthParam-1]; // haal de maand op (params zijn based op 1 en arrays op 0)
+
+		jsonfile.readFile('./data/' + month + '.json', function(error, obj){
+			var dates = obj;
+			res.render('index', { dates: dates });
+		});
+
+	}
 
 });
 
@@ -137,7 +142,7 @@ Er word door de json file dates geloopt en vanuit daar content in html geplaatst
 
 ```
 		<form class="agenda_content" action="/" method="post">
-		
+
 			<div class="agenda">
 				<ul class="agenda_dates active">
 					<li></li>
@@ -151,12 +156,11 @@ Er word door de json file dates geloopt en vanuit daar content in html geplaatst
 								<label for="<%- date.date %>">
 									<span class="<%- date.class %>"><%- date.day %></span>
 								</label>
-							</li>
-						
+							</li>						
 
 						<% } else if(date.amountOfBookings > 0 && date.amountOfBookings <= 14) { %>
 							<li class="is--booked">
-								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>" >
 								<label for="<%- date.date %>">
 									<span class="<%- date.class %>"><%- date.day %></span>
 								</label>
@@ -164,7 +168,7 @@ Er word door de json file dates geloopt en vanuit daar content in html geplaatst
 
 						<% } else { %>
 							<li class="is--full">
-								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>">
+								<input id="<%- date.date %>" class="day" type="checkbox" name="dates" value="<%- date.date %>" disabled>
 								<label for="<%- date.date %>">
 									<span class="<%- date.class %>"><%- date.day %></span>
 								</label>
@@ -262,22 +266,19 @@ In objects opgebouwt + xhr die een post afhandeld met javascript.
 (function() {
   'use strict';
  
-  var pageLoad = {
+  var app = {
   };
 
-  var planner = { 
+  var pageLoad = { 
   };
 
-  var booking = {
+  var planner = {
   };
 
   var helpers = {
   };
 
   var click = {
-  };
-
-  var notification = {
   };
 
   app.init();
@@ -335,10 +336,4 @@ Bekijk het via > systeemsvoorkeuren > toegankelijkheid > gebruik grijstinten
 ##Tab true
 ![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/tab.png) 
 
-## Wanted to/nice to have 
-- 1 Json bestand. Het bestand data.json zou dan toegevoed worden aan dates.json zo kan er voor elke datum bijgehouden worden in welke room is geboeked. Als de gebruiker dan weer op een geboekte date klikt word er uit de database de geboekte room gehaald. Om deze vervolgens als een gebookte state te laten zien in de bookroom toolbar. Zo kan de gebruiker makkelijk zien in welke rooms hij ingeboeked is per datum en kan hij zijn boeking ook gemakkelijk ongedaan maken. 
-
-![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/bookedroom.png) 
-
-- Het verwijderen van je geboekte room en datum. 
-- bookbutton disabeld als er 5 booked dates zijn. 
+ 
