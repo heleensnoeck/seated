@@ -333,7 +333,6 @@ script.js
 ##Kleurenblind
 Bekijk het via > systeemsvoorkeuren > toegankelijkheid > gebruik grijstinten
 
-##Tab true
-![alt tag](https://github.com/heleensnoeck/seated/blob/final/screenshots/tab.png) 
+
 
  
